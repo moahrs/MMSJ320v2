@@ -1,0 +1,21 @@
+# Requested exclusions
+*.o
+*.O
+*.exe
+*.EXE
+*.prj
+*.PRJ
+*.elf
+*.ELF
+*.bin
+*.BIN
+*.map
+*.MAP
+*.lst
+*.LST
+*.a68
+*.A68
+**/MotoFFP-main/
+build.log
+build_clean.log
+tools.log
