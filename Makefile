@@ -6,12 +6,41 @@ CFLAGS = -m68000 -Wall -O2 -ffreestanding -nostdlib -Iinclude -w
 LDFLAGS = -T linker.ld -nostdlib
 LDLIBS = -lgcc
 
-SRC = $(wildcard src/*.c) $(wildcard src/*.S)
-OBJ = $(SRC:.c=.o)
-OBJ := $(OBJ:.S=.o)
+# Keep explicit source lists for deterministic build/link behavior.
+SRC_C = \
+	src/libc_stub.c \
+	src/mmsj320vdp.c \
+	src/mmsj320mfp.c \
+	src/monitor.c
+
+SRC_S = \
+	src/boot.S \
+	src/os_boot.S \
+	src/monitor_ram.S \
+	src/monitor_fontes.S
+
+OBJ = $(SRC_C:.c=.o) $(SRC_S:.S=.o)
+
+# Link order mapped from monitor.prj:
+#   os_boot.asm -> os_boot.S
+#   mmsj320vdp.c
+#   mmsj320mfp.c
+#   monitor.c
+#   monitor_ram.a68 -> monitor_ram.S
+#   monitor_fontes.a68 -> monitor_fontes.S
+# Plus current GCC build glue already used in this repo: boot.S and libc_stub.c.
+LINK_OBJ = \
+	src/os_boot.o \
+	src/mmsj320vdp.o \
+	src/mmsj320mfp.o \
+	src/monitor.o \
+	src/monitor_ram.o \
+	src/monitor_fontes.o \
+	src/boot.o \
+	src/libc_stub.o
 
 all: $(OBJ)
-	$(CC) $(LDFLAGS) -Wl,-Map=monitor.map -o monitor.elf $(OBJ) $(LDLIBS)
+	$(CC) $(LDFLAGS) -Wl,-Map=monitor.map -o monitor.elf $(LINK_OBJ) $(LDLIBS)
 	$(OBJDUMP) -x -d monitor.elf > monitor.lst
 
 src/%.o: src/%.c

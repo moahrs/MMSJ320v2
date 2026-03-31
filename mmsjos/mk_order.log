@@ -1,0 +1,249 @@
+del /q src\*.o src\uCOSII\*.o uCOSII\*.o *.o *.elf *.bin *.map *.lst src\*.c.lst uCOSII\*.c.lst 2>nul
+make: [Makefile:91: clean] Error 127 (ignored)
+m68k-elf-gcc -m68000 -Wall -Os -ffreestanding -nostdlib -fcommon -w -I../include -Iinclude -I.. -IuCOSII -ffunction-sections -fdata-sections -fno-unwind-tables -fno-asynchronous-unwind-tables -flto -c uCOSII/os_cpu_c.c -o uCOSII/os_cpu_c.o
+m68k-elf-gcc -m68000 -Wall -Os -ffreestanding -nostdlib -fcommon -w -I../include -Iinclude -I.. -IuCOSII -ffunction-sections -fdata-sections -fno-unwind-tables -fno-asynchronous-unwind-tables -flto -c uCOSII/ucos_ii.c -o uCOSII/ucos_ii.o
+m68k-elf-gcc -m68000 -Wall -Os -ffreestanding -nostdlib -fcommon -w -I../include -Iinclude -I.. -IuCOSII -ffunction-sections -fdata-sections -fno-unwind-tables -fno-asynchronous-unwind-tables -flto   -c -o ../src/mmsj320mfp.o ../src/mmsj320mfp.c
+m68k-elf-gcc -m68000 -Wall -Os -ffreestanding -nostdlib -fcommon -w -I../include -Iinclude -I.. -IuCOSII -ffunction-sections -fdata-sections -fno-unwind-tables -fno-asynchronous-unwind-tables -flto -c src/mmsjos.c -o src/mmsjos.o
+m68k-elf-gcc -m68000 -Wall -Os -ffreestanding -nostdlib -fcommon -w -I../include -Iinclude -I.. -IuCOSII -ffunction-sections -fdata-sections -fno-unwind-tables -fno-asynchronous-unwind-tables -flto -c src/mgui.c -o src/mgui.o
+m68k-elf-gcc -m68000 -Wall -Os -ffreestanding -nostdlib -fcommon -w -I../include -Iinclude -I.. -IuCOSII -ffunction-sections -fdata-sections -fno-unwind-tables -fno-asynchronous-unwind-tables -flto -c src/mmsjos_start.S -o src/mmsjos_start.o
+m68k-elf-gcc -m68000 -Wall -Os -ffreestanding -nostdlib -fcommon -w -I../include -Iinclude -I.. -IuCOSII -ffunction-sections -fdata-sections -fno-unwind-tables -fno-asynchronous-unwind-tables -flto -c src/mgui_table.S -o src/mgui_table.o
+m68k-elf-gcc -m68000 -Wall -Os -ffreestanding -nostdlib -fcommon -w -I../include -Iinclude -I.. -IuCOSII -ffunction-sections -fdata-sections -fno-unwind-tables -fno-asynchronous-unwind-tables -flto -c src/mmsjos_ram.S -o src/mmsjos_ram.o
+m68k-elf-gcc -m68000 -Wall -Os -ffreestanding -nostdlib -fcommon -w -I../include -Iinclude -I.. -IuCOSII -ffunction-sections -fdata-sections -fno-unwind-tables -fno-asynchronous-unwind-tables -flto -c src/mgui_sprite.S -o src/mgui_sprite.o
+m68k-elf-gcc -m68000 -Wall -Os -ffreestanding -nostdlib -fcommon -w -I../include -Iinclude -I.. -IuCOSII -ffunction-sections -fdata-sections -fno-unwind-tables -fno-asynchronous-unwind-tables -flto -x assembler-with-cpp -c uCOSII/os_cpu_a.asm -o uCOSII/os_cpu_a.o
+uCOSII/os_cpu_a.asm: Assembler messages:
+uCOSII/os_cpu_a.asm:2: Error: Unknown operator -- statement `uc/OS-II' ignored
+uCOSII/os_cpu_a.asm:3: Error: Unknown operator -- statement `the Real-Time Kernel' ignored
+uCOSII/os_cpu_a.asm:5: Error: junk at end of line, first unrecognized character is `('
+uCOSII/os_cpu_a.asm:6: Error: Unknown operator -- statement `all Rights Reserved' ignored
+uCOSII/os_cpu_a.asm:9: Error: junk at end of line, first unrecognized character is `6'
+uCOSII/os_cpu_a.asm:10: Error: Unknown operator -- statement `ide68k' ignored
+uCOSII/os_cpu_a.asm:12: Error: Unknown operator -- statement `os_cpu_a.asm' ignored
+uCOSII/os_cpu_a.asm:13: Error: Unknown operator -- statement `jean J. Labrosse,Peter J. Fondse' ignored
+uCOSII/os_cpu_a.asm:18: Error: Unknown operator -- statement `revision HISTORY' ignored
+uCOSII/os_cpu_a.asm:20: Error: Unknown operator -- statement `$log$' ignored
+uCOSII/os_cpu_a.asm:26: Error: Unknown operator -- statement `public DECLARATIONS' ignored
+uCOSII/os_cpu_a.asm:33: Error: junk at end of line, first unrecognized character is `:'
+uCOSII/os_cpu_a.asm:36: Error: Unknown operator -- statement `external DECLARATIONS' ignored
+uCOSII/os_cpu_a.asm:39: Error: Unknown operator -- statement `xref _OSCtxSwCtr' ignored
+uCOSII/os_cpu_a.asm:40: Error: Unknown operator -- statement `xref _OSIntExit' ignored
+uCOSII/os_cpu_a.asm:41: Error: Unknown operator -- statement `xref _OSIntNesting' ignored
+uCOSII/os_cpu_a.asm:42: Error: Unknown operator -- statement `xref _OSLockNesting' ignored
+uCOSII/os_cpu_a.asm:43: Error: Unknown operator -- statement `xref _OSPrioCur' ignored
+uCOSII/os_cpu_a.asm:44: Error: Unknown operator -- statement `xref _OSPrioHighRdy' ignored
+uCOSII/os_cpu_a.asm:45: Error: Unknown operator -- statement `xref _OSRdyGrp' ignored
+uCOSII/os_cpu_a.asm:46: Error: Unknown operator -- statement `xref _OSRdyTbl' ignored
+uCOSII/os_cpu_a.asm:47: Error: Unknown operator -- statement `xref _OSRunning' ignored
+uCOSII/os_cpu_a.asm:48: Error: Unknown operator -- statement `xref _OSTaskSwHook' ignored
+uCOSII/os_cpu_a.asm:49: Error: Unknown operator -- statement `xref _OSTCBCur' ignored
+uCOSII/os_cpu_a.asm:50: Error: Unknown operator -- statement `xref _OSTCBHighRdy' ignored
+uCOSII/os_cpu_a.asm:51: Error: Unknown operator -- statement `xref _OSTCBPrioTbl' ignored
+uCOSII/os_cpu_a.asm:52: Error: Unknown operator -- statement `xref _OSTimeTick' ignored
+uCOSII/os_cpu_a.asm:53: Error: Unknown operator -- statement `xref _OSUnMapTbl' ignored
+uCOSII/os_cpu_a.asm:56: Error: Unknown operator -- statement `start HIGHEST PRIORITY TASK READY-TO-RUN' ignored
+uCOSII/os_cpu_a.asm:58: Error: Unknown operator -- statement `this function is called by OSStart()to start the highest priority task that was created' ignored
+uCOSII/os_cpu_a.asm:59: Error: Unknown operator -- statement `by your application before calling OSStart().' ignored
+uCOSII/os_cpu_a.asm:61: Error: Unknown operator -- statement `none' ignored
+uCOSII/os_cpu_a.asm:63: Error: Unknown operator -- statement `note(s):1) The stack frame is assumed to look as follows:' ignored
+uCOSII/os_cpu_a.asm:65: Error: Unknown operator -- statement `ostcbhighrdy->OSTCBStkPtr +0---->D0(H)Low Memory' ignored
+uCOSII/os_cpu_a.asm:66: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:67: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:68: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:69: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:70: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:71: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:72: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:73: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:74: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:75: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:76: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:77: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:78: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:79: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:80: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:81: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:82: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:83: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:84: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:85: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:86: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:87: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:88: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:89: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:90: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:91: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:92: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:93: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:94: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:95: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:96: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:97: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:98: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:99: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:100: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:101: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:103: Error: junk at end of line, first unrecognized character is `2'
+uCOSII/os_cpu_a.asm:104: Error: Unknown operator -- statement `a) Call OSTaskSwHook()then,' ignored
+uCOSII/os_cpu_a.asm:105: Error: Unknown operator -- statement `b) Set OSRunning to TRUE,' ignored
+uCOSII/os_cpu_a.asm:106: Error: Unknown operator -- statement `c) Switch to the highest priority task.' ignored
+uCOSII/os_cpu_a.asm:109: Error: Unknown operator -- statement `section code' ignored
+uCOSII/os_cpu_a.asm:112: Error: Unknown operator -- statement `invoke user defined context switch hook' ignored
+uCOSII/os_cpu_a.asm:113: Error: Unknown operator -- statement `indicate that we are multitasking' ignored
+uCOSII/os_cpu_a.asm:114: Error: Unknown operator -- statement `point to TCB of highest priority task ready to run' ignored
+uCOSII/os_cpu_a.asm:115: Error: Unknown operator -- statement `get the stack pointer of the task to resume' ignored
+uCOSII/os_cpu_a.asm:116: Error: operands mismatch -- statement `movem.l (A7)+,A0-A6/D0-D7' ignored
+uCOSII/os_cpu_a.asm:116: Error: Unknown operator -- statement `restore the CPU registers' ignored
+uCOSII/os_cpu_a.asm:117: Error: Unknown operator -- statement `run task' ignored
+uCOSII/os_cpu_a.asm:120: Error: Unknown operator -- statement `task LEVEL CONTEXT SWITCH' ignored
+uCOSII/os_cpu_a.asm:122: Error: symbol `Description' is already defined
+uCOSII/os_cpu_a.asm:122: Error: Unknown operator -- statement `this function is called when a task makes a higher priority task ready-to-run.' ignored
+uCOSII/os_cpu_a.asm:124: Error: symbol `Arguments' is already defined
+uCOSII/os_cpu_a.asm:124: Error: Unknown operator -- statement `none' ignored
+uCOSII/os_cpu_a.asm:126: Error: Unknown operator -- statement `note(s):1) Upon entry,' ignored
+uCOSII/os_cpu_a.asm:127: Error: Unknown operator -- statement `ostcbcur points to the OS_TCB of the task to suspend' ignored
+uCOSII/os_cpu_a.asm:128: Error: Unknown operator -- statement `ostcbhighrdy points to the OS_TCB of the task to resume' ignored
+uCOSII/os_cpu_a.asm:130: Error: junk at end of line, first unrecognized character is `2'
+uCOSII/os_cpu_a.asm:131: Error: Unknown operator -- statement `task to suspend need to be saved):' ignored
+uCOSII/os_cpu_a.asm:133: Error: Unknown operator -- statement `sp +0---->SR Low Memory' ignored
+uCOSII/os_cpu_a.asm:134: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:135: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:137: Error: junk at end of line, first unrecognized character is `3'
+uCOSII/os_cpu_a.asm:139: Error: Unknown operator -- statement `ostcbhighrdy->OSTCBStkPtr +0---->D0(H)Low Memory' ignored
+uCOSII/os_cpu_a.asm:140: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:141: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:142: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:143: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:144: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:145: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:146: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:147: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:148: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:149: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:150: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:151: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:152: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:153: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:154: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:155: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:156: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:157: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:158: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:159: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:160: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:161: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:162: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:163: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:164: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:165: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:166: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:167: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:168: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:169: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:170: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:171: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:175: Error: operands mismatch -- statement `movem.l A0-A6/D0-D7,-(A7)' ignored
+uCOSII/os_cpu_a.asm:175: Error: Unknown operator -- statement `save the registers of the current task' ignored
+uCOSII/os_cpu_a.asm:176: Error: Unknown operator -- statement `save the stack pointer in the suspended task TCB' ignored
+uCOSII/os_cpu_a.asm:178: Error: Unknown operator -- statement `invoke user defined context switch hook' ignored
+uCOSII/os_cpu_a.asm:181: Error: Unknown operator -- statement `get the stack pointer of the task to resume' ignored
+uCOSII/os_cpu_a.asm:183: Error: operands mismatch -- statement `movem.l (A7)+,A0-A6/D0-D7' ignored
+uCOSII/os_cpu_a.asm:183: Error: Unknown operator -- statement `restore the CPU registers' ignored
+uCOSII/os_cpu_a.asm:184: Error: Unknown operator -- statement `run task' ignored
+uCOSII/os_cpu_a.asm:187: Error: Unknown operator -- statement `interrupt LEVEL CONTEXT SWITCH' ignored
+uCOSII/os_cpu_a.asm:189: Error: symbol `Description' is already defined
+uCOSII/os_cpu_a.asm:189: Error: Unknown operator -- statement `this function is called from OSIntExit()in OS_CORE.C' ignored
+uCOSII/os_cpu_a.asm:190: Error: Unknown operator -- statement `provided for backward compatibility. The ISR MUST NOT call OSIntExit(),but should jump' ignored
+uCOSII/os_cpu_a.asm:191: Error: Unknown operator -- statement `to OSIntExit68K().' ignored
+uCOSII/os_cpu_a.asm:195: Error: operands mismatch -- statement `adda.l #10,A7' ignored
+uCOSII/os_cpu_a.asm:195: Error: Unknown operator -- statement `adjust the stack' ignored
+uCOSII/os_cpu_a.asm:196: Error: Unknown operator -- statement `save the stack pointer in the suspended task TCB' ignored
+uCOSII/os_cpu_a.asm:198: Error: Unknown operator -- statement `invoke user defined context switch hook' ignored
+uCOSII/os_cpu_a.asm:201: Error: Unknown operator -- statement `get the stack pointer of the task to resume' ignored
+uCOSII/os_cpu_a.asm:203: Error: operands mismatch -- statement `movem.l (A7)+,A0-A6/D0-D7' ignored
+uCOSII/os_cpu_a.asm:203: Error: Unknown operator -- statement `restore the CPU registers' ignored
+uCOSII/os_cpu_a.asm:204: Error: Unknown operator -- statement `run task' ignored
+uCOSII/os_cpu_a.asm:207: Error: Unknown operator -- statement `interrupt EXIT FUNCTION(68K specific)' ignored
+uCOSII/os_cpu_a.asm:209: Error: symbol `Description' is already defined
+uCOSII/os_cpu_a.asm:209: Error: Unknown operator -- statement `isr115 (written in Assembly)must directly JUMP to OSIntExit68K' ignored
+uCOSII/os_cpu_a.asm:212: Error: Unknown operator -- statement `you must NOT use call OSIntExit()to exit an ISR with the 68K,but jump to OSIntExit68K().' ignored
+uCOSII/os_cpu_a.asm:214: Error: Unknown operator -- statement `stack frame upon entry:' ignored
+uCOSII/os_cpu_a.asm:216: Error: Unknown operator -- statement `sp +0---->D0(H)' ignored
+uCOSII/os_cpu_a.asm:217: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:218: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:219: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:220: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:221: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:222: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:223: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:224: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:225: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:226: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:227: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:228: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:229: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:230: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:231: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:232: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:233: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:234: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:235: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:236: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:237: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:238: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:239: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:240: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:241: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:242: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:243: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:244: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:245: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:246: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:247: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:248: Error: junk at end of line, first unrecognized character is `+'
+uCOSII/os_cpu_a.asm:252: Error: Unknown operator -- statement `if (--OSIntNesting==0)' ignored
+uCOSII/os_cpu_a.asm:254: Error: Unknown operator -- statement `if (OSLockNesting==0)' ignored
+uCOSII/os_cpu_a.asm:256: Error: syntax error -- statement `move.w (60,A7),D0' ignored
+uCOSII/os_cpu_a.asm:256: Error: Unknown operator -- statement `if (LAST nested ISR)' ignored
+uCOSII/os_cpu_a.asm:259: Error: operands mismatch -- statement `lea _OSUnMapTbl,A0' ignored
+uCOSII/os_cpu_a.asm:259: Error: junk at end of line, first unrecognized character is `['
+uCOSII/os_cpu_a.asm:262: Error: syntax error -- statement `move.b 0(A0,D0.L),D1' ignored
+uCOSII/os_cpu_a.asm:262: Error: Unknown operator -- statement `y in D1' ignored
+uCOSII/os_cpu_a.asm:263: Error: operands mismatch -- statement `lea _OSRdyTbl,A0' ignored
+uCOSII/os_cpu_a.asm:263: Error: junk at end of line, first unrecognized character is `('
+uCOSII/os_cpu_a.asm:266: Error: syntax error -- statement `lea 0(A0,D0.L),A0' ignored
+uCOSII/os_cpu_a.asm:268: Error: Unknown operator -- statement `osrdytbl[y] in D0' ignored
+uCOSII/os_cpu_a.asm:269: Error: operands mismatch -- statement `lea _OSUnMapTbl,A0' ignored
+uCOSII/os_cpu_a.asm:270: Error: syntax error -- statement `lea 0(A0,D0.L),A0' ignored
+uCOSII/os_cpu_a.asm:270: Error: junk at end of line, first unrecognized character is `&'
+uCOSII/os_cpu_a.asm:272: Error: operands mismatch -- statement `lsl.b #3,D0' ignored
+uCOSII/os_cpu_a.asm:272: Error: junk at end of line, first unrecognized character is `('
+uCOSII/os_cpu_a.asm:273: Error: operands mismatch -- statement `add.b (A0),D0' ignored
+uCOSII/os_cpu_a.asm:275: Error: operands mismatch -- statement `cmp.b _OSPrioCur,D0' ignored
+uCOSII/os_cpu_a.asm:275: Error: Unknown operator -- statement `if (OSPrioCur!=OSPrioHighRdy){' ignored
+uCOSII/os_cpu_a.asm:277: Error: operands mismatch -- statement `lea _OSTCBPrioTbl,A0' ignored
+uCOSII/os_cpu_a.asm:277: Error: junk at end of line, first unrecognized character is `['
+uCOSII/os_cpu_a.asm:280: Error: operands mismatch -- statement `lsl.l #2,D1' ignored
+uCOSII/os_cpu_a.asm:281: Error: syntax error -- statement `lea 0(A0,D1.L),A0' ignored
+uCOSII/os_cpu_a.asm:283: Error: Unknown operator -- statement `osctxswctr++' ignored
+uCOSII/os_cpu_a.asm:284: Error: Unknown operator -- statement `save the stack pointer in the suspended task TCB' ignored
+uCOSII/os_cpu_a.asm:286: Error: Unknown operator -- statement `invoke user defined context switch hook' ignored
+uCOSII/os_cpu_a.asm:290: Error: Unknown operator -- statement `get the stack pointer of the task to resume' ignored
+uCOSII/os_cpu_a.asm:292: Error: operands mismatch -- statement `movem.l (A7)+,A0-A6/D0-D7' ignored
+uCOSII/os_cpu_a.asm:292: Error: Unknown operator -- statement `restore the CPU registers' ignored
+uCOSII/os_cpu_a.asm:293: Error: Unknown operator -- statement `return to task or nested ISR' ignored
+uCOSII/os_cpu_a.asm:296: Error: Unknown operator -- statement `system TICK ISR' ignored
+uCOSII/os_cpu_a.asm:298: Error: symbol `Description' is already defined
+uCOSII/os_cpu_a.asm:298: Error: Unknown operator -- statement `this function is the ISR used to notify uC/OS-II that a system tick has occurred.' ignored
+uCOSII/os_cpu_a.asm:300: Error: symbol `Arguments' is already defined
+uCOSII/os_cpu_a.asm:300: Error: Unknown operator -- statement `none' ignored
+uCOSII/os_cpu_a.asm:302: Error: symbol `Notes' is already defined
+uCOSII/os_cpu_a.asm:302: Error: junk at end of line, first unrecognized character is `1'
+uCOSII/os_cpu_a.asm:303: Error: junk at end of line, first unrecognized character is `2'
+uCOSII/os_cpu_a.asm:304: Error: junk at end of line, first unrecognized character is `3'
+uCOSII/os_cpu_a.asm:308: Error: Unknown operator -- statement `disable ALL interrupts' ignored
+uCOSII/os_cpu_a.asm:309: Error: Unknown operator -- statement `osintnesting++' ignored
+uCOSII/os_cpu_a.asm:310: Error: operands mismatch -- statement `movem.l A0-A6/D0-D7,-(A7)' ignored
+uCOSII/os_cpu_a.asm:310: Error: Unknown operator -- statement `save the registers of the current task' ignored
+uCOSII/os_cpu_a.asm:311: Error: Unknown operator -- statement `call uC/OS-II115tick updating function' ignored
+uCOSII/os_cpu_a.asm:312: Error: Unknown operator -- statement `exit ISR' ignored
+make: *** [Makefile:82: uCOSII/os_cpu_a.o] Error 1
+BUILD_FAIL

@@ -1,0 +1,416 @@
+In file included from src/basic.c:47:
+../include/mmsj320api.h:14:24: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   14 | unsigned char *vdsk  = 0x00200000; // DISK Arduino Uno, r/w
+      |                        ^~~~~~~~~~
+../include/mmsj320api.h:15:24: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   15 | unsigned char *vdskc = 0x00200001; // DISK Arduino Uno, r/w Command
+      |                        ^~~~~~~~~~
+../include/mmsj320api.h:16:24: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   16 | unsigned char *vdskp = 0x00200005; // DISK Arduino Uno, r/w Command Param
+      |                        ^~~~~~~~~~
+../include/mmsj320api.h:17:24: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   17 | unsigned char *vdskd = 0x00200003; // DISK Arduino Uno, r/w Data
+      |                        ^~~~~~~~~~
+../include/mmsj320api.h:23:40: warning: initialization of 'short unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   23 | unsigned short *errorBufferAddrBus   = 0x0060F208; // 64 words
+      |                                        ^~~~~~~~~~
+../include/mmsj320api.h:25:40: warning: initialization of 'short unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   25 | unsigned short *traceData            = 0x0060F28A; // 512 words
+      |                                        ^~~~~~~~~~
+../include/mmsj320api.h:27:40: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   27 | unsigned long *tracePointer          = 0x0060F68C;
+      |                                        ^~~~~~~~~~
+../include/mmsj320api.h:28:40: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   28 | unsigned long *traceA7               = 0x0060F692;
+      |                                        ^~~~~~~~~~
+../include/mmsj320api.h:29:40: warning: initialization of 'short unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   29 | unsigned short *regA7                = 0x0060F696;
+      |                                        ^~~~~~~~~~
+In file included from src/basic.c:52:
+include/basic.h:36:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   36 | unsigned char *pStartSimpVar        = 0x00800000;   // Area Variaveis Simples
+      |                                       ^~~~~~~~~~
+include/basic.h:37:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   37 | unsigned char *pStartArrayVar       = 0x00803000;   // Area Arrays
+      |                                       ^~~~~~~~~~
+include/basic.h:38:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   38 | unsigned char *pStartString         = 0x00810000;   // Area Strings
+      |                                       ^~~~~~~~~~
+include/basic.h:39:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   39 | unsigned char *pStartProg           = 0x00830000;   // Area Programa  deve ser 0x00810000
+      |                                       ^~~~~~~~~~
+include/basic.h:40:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   40 | unsigned char *pStartXBasLoad       = 0x00890000;   // Area onde será importado o programa em basic texto a ser tokenizado depois
+      |                                       ^~~~~~~~~~
+include/basic.h:41:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   41 | unsigned char *pStartStack          = 0x008FE000;   // Area variaveis sistema e stack pointer
+      |                                       ^~~~~~~~~~
+include/basic.h:43:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   43 | unsigned char *pProcess             = 0x008FFFFE;
+      |                                       ^~~~~~~~~~
+include/basic.h:44:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   44 | unsigned char *pTypeLine            = 0x008FFFFC; // 0x00 = Proxima linha tem "READY" e ">". 0x01 = Proxima linha tem somente ">"
+      |                                       ^~~~~~~~~~
+include/basic.h:45:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   45 | unsigned long *nextAddrLine         = 0x008FFFF8; // Endereco da proxima linha disponivel pra ser incluida do basic
+      |                                       ^~~~~~~~~~
+include/basic.h:46:39: warning: initialization of 'short unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   46 | unsigned short *firstLineNumber     = 0x008FFFF6; // Numero de Linha mais Baixo
+      |                                       ^~~~~~~~~~
+include/basic.h:47:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   47 | unsigned long *addrFirstLineNumber  = 0x008FFFF2; // Endereco do numero de linha mais baixo
+      |                                       ^~~~~~~~~~
+include/basic.h:48:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   48 | unsigned long *addrLastLineNumber   = 0x008FFFEE; // Endereco do numero de linha mais baixo
+      |                                       ^~~~~~~~~~
+include/basic.h:49:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   49 | unsigned long *nextAddr             = 0x008FFFEA; // usado para controleno runProg
+      |                                       ^~~~~~~~~~
+include/basic.h:50:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   50 | unsigned long *nextAddrSimpVar      = 0x008FFFE6; // Endereco da proxima linha disponivel pra definir variavel
+      |                                       ^~~~~~~~~~
+include/basic.h:51:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   51 | unsigned long *nextAddrArrayVar     = 0x008FFFE2; // Endereco da proxima linha disponivel pra definir array
+      |                                       ^~~~~~~~~~
+include/basic.h:52:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   52 | unsigned long *nextAddrString       = 0x008FFFDE; // Endereco da proxima linha disponivel pra incluir string
+      |                                       ^~~~~~~~~~
+include/basic.h:54:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   54 | unsigned char *comandLineTokenized  = 0x008FFEDF; // Linha digitada sem numeros inicial e sem comandos basicos irá interpretada com tokens (255 Bytes)
+      |                                       ^~~~~~~~~~
+include/basic.h:55:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   55 | unsigned char *vParenteses          = 0x008FFEDD; // Controle de Parenteses na linha inteira durante processamento
+      |                                       ^~~~~~~~~~
+include/basic.h:56:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   56 | unsigned char *vInicioSentenca      = 0x008FFEDB; // Indica inicio de sentenca, sempre inicio analise ou depois de uma ",", ":", "THEN" ou "ELSE"
+      |                                       ^~~~~~~~~~
+include/basic.h:57:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   57 | unsigned char *vMaisTokens          = 0x008FFED9; // Tem um = como atribuicao mas tem mais variaveis e/ou tokens no sistema
+      |                                       ^~~~~~~~~~
+include/basic.h:58:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   58 | unsigned char *vTemIf               = 0x008FFED7; // Linha comecou com if, e tem que ter pelo menos then ou then e else
+      |                                       ^~~~~~~~~~
+include/basic.h:59:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   59 | unsigned char *doisPontos           = 0x008FFED3; // Se teve 2 pontos na linha e inicia novo comando como se fosse linha nova
+      |                                       ^~~~~~~~~~
+include/basic.h:60:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   60 | unsigned char *vTemAndOr            = 0x008FFED1; // Foi lido uma vez um AND ou um OR, e deve finalizar a condicao anterior, na proxima deve executar ele.
+      |                                       ^~~~~~~~~~
+include/basic.h:61:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   61 | unsigned char *vTemThen             = 0x008FFECF; // Foi lido then
+      |                                       ^~~~~~~~~~
+include/basic.h:62:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   62 | unsigned char *vTemElse             = 0x008FFECD; // Foi lido else
+      |                                       ^~~~~~~~~~
+include/basic.h:63:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   63 | unsigned char *vTemIfAndOr          = 0x008FFECA; // Foi lido uma vez um AND ou um OR com IF, e deve finalizar a condicao anterior, na proxima deve executar ele.
+      |                                       ^~~~~~~~~~
+include/basic.h:64:39: warning: initialization of 'short unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   64 | unsigned short *vErroProc           = 0x008FFEC6; // Erro global
+      |                                       ^~~~~~~~~~
+include/basic.h:65:39: warning: initialization of 'int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   65 | int *ftos                           = 0x008FFEC2; // index to top of FOR stack
+      |                                       ^~~~~~~~~~
+include/basic.h:66:39: warning: initialization of 'int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   66 | int *gtos                           = 0x008FFEBE; // index to top of GOSUB stack
+      |                                       ^~~~~~~~~~
+include/basic.h:68:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   68 | unsigned long *floatBufferStr       = 0x008FEFA6; // Endereco da variavel do buffer q vai receber a string vindo do floattostr
+      |                                       ^~~~~~~~~~
+include/basic.h:69:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   69 | unsigned long *floatNumD7           = 0x008FEE9E; // com o valor a colocar em D7 para calculos float
+      |                                       ^~~~~~~~~~
+include/basic.h:70:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   70 | unsigned long *floatNumD6           = 0x008FEE96; // com o valor a colocar em D6 para calculos float
+      |                                       ^~~~~~~~~~
+include/basic.h:71:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   71 | unsigned long *floatNumA0           = 0x008FEE8E; // com o valor a colocar em A0 para saber qual BNE usar
+      |                                       ^~~~~~~~~~
+include/basic.h:72:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   72 | unsigned long *randSeed             = 0x008FEE86; // Numero para ser usado no randomico
+      |                                       ^~~~~~~~~~
+include/basic.h:73:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   73 | unsigned char *lastHgrX             = 0x008FEE84; //
+      |                                       ^~~~~~~~~~
+include/basic.h:74:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   74 | unsigned char *lastHgrY             = 0x008FEE82; //
+      |                                       ^~~~~~~~~~
+include/basic.h:75:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   75 | unsigned long *vDataBkpPointerProg  = 0x008FEE70; //
+      |                                       ^~~~~~~~~~
+include/basic.h:76:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   76 | unsigned long *vDataPointer         = 0x008FEE5A; //
+      |                                       ^~~~~~~~~~
+include/basic.h:77:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   77 | unsigned long *pointerRunProg       = 0x008FEE56; // Ponteiro da execucao do programa ou linha digitada
+      |                                       ^~~~~~~~~~
+include/basic.h:78:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   78 | unsigned char *tok                  = 0x008FEE54;
+      |                                       ^~~~~~~~~~
+include/basic.h:79:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   79 | unsigned char *token_type           = 0x008FEE52;
+      |                                       ^~~~~~~~~~
+include/basic.h:80:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   80 | unsigned char *value_type           = 0x008FEE50;
+      |                                       ^~~~~~~~~~
+include/basic.h:81:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   81 | unsigned long *onErrGoto            = 0x008FEE4A;
+      |                                       ^~~~~~~~~~
+include/basic.h:82:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   82 | unsigned long *changedPointer       = 0x008FEE42; // Se ouve mudanca de endereço (goto/gosub/for-next e etc), nao usa sequencia, usa o endereço definido
+      |                                       ^~~~~~~~~~
+include/basic.h:83:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   83 | unsigned char *token                = 0x008FED6E; //
+      |                                       ^~~~~~~~~~
+include/basic.h:84:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   84 | unsigned char *varName              = 0x008FEC6E; // ja esta ok
+      |                                       ^~~~~~~~~~
+include/basic.h:85:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   85 | unsigned char *traceOn              = 0x008FEC66; // Mostra numero linhas durante execucao, para debug
+      |                                       ^~~~~~~~~~
+include/basic.h:86:39: warning: initialization of 'unsigned char *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   86 | unsigned char *debugOn              = 0x008FEC64; // Mostra debug, para debug
+      |                                       ^~~~~~~~~~
+include/basic.h:87:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   87 | unsigned long *gosubStack           = 0x008FE966; // ja esta ok stack for gosub/return
+      |                                       ^~~~~~~~~~
+include/basic.h:88:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   88 | unsigned long *vDataFirst           = 0x008FE962; //
+      |                                       ^~~~~~~~~~
+include/basic.h:89:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   89 | unsigned long *vDataLineAtu         = 0x008FE95E; //
+      |                                       ^~~~~~~~~~
+include/basic.h:90:39: warning: initialization of 'for_stack *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   90 | for_stack *forStack                 = 0x008FF6BE; // stack for FOR/NEXT loop
+      |                                       ^~~~~~~~~~
+include/basic.h:91:39: warning: initialization of 'long unsigned int *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   91 | unsigned long *atuVarAddr           = 0x008FF6B0; // Endereco da variavel atualmente usada pelo basLet
+      |                                       ^~~~~~~~~~
+include/basic.h:93:7: warning: type defaults to 'int' in declaration of 'keywords_count' [-Wimplicit-int]
+   93 | const keywords_count = 67;
+      |       ^~~~~~~~~~~~~~
+include/basic.h:99:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+   99 |     /* 00 */ "?reserved 0",
+      |              ^~~~~~~~~~~~~
+include/basic.h:99:14: note: (near initialization for 'listError[0]')
+include/basic.h:100:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  100 |     /* 01 */ "?Stopped",
+      |              ^~~~~~~~~~
+include/basic.h:100:14: note: (near initialization for 'listError[1]')
+include/basic.h:101:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  101 |     /* 02 */ "?No expression present",
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~
+include/basic.h:101:14: note: (near initialization for 'listError[2]')
+include/basic.h:102:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  102 |     /* 03 */ "?Equals sign expected",
+      |              ^~~~~~~~~~~~~~~~~~~~~~~
+include/basic.h:102:14: note: (near initialization for 'listError[3]')
+include/basic.h:103:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  103 |     /* 04 */ "?Not a variable",
+      |              ^~~~~~~~~~~~~~~~~
+include/basic.h:103:14: note: (near initialization for 'listError[4]')
+include/basic.h:104:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  104 |     /* 05 */ "?Out of range",
+      |              ^~~~~~~~~~~~~~~
+include/basic.h:104:14: note: (near initialization for 'listError[5]')
+include/basic.h:105:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  105 |     /* 06 */ "?Illegal quantity",
+      |              ^~~~~~~~~~~~~~~~~~~
+include/basic.h:105:14: note: (near initialization for 'listError[6]')
+include/basic.h:106:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  106 |     /* 07 */ "?Line not found",
+      |              ^~~~~~~~~~~~~~~~~
+include/basic.h:106:14: note: (near initialization for 'listError[7]')
+include/basic.h:107:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  107 |     /* 08 */ "?THEN expected",
+      |              ^~~~~~~~~~~~~~~~
+include/basic.h:107:14: note: (near initialization for 'listError[8]')
+include/basic.h:108:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  108 |     /* 09 */ "?TO expected",
+      |              ^~~~~~~~~~~~~~
+include/basic.h:108:14: note: (near initialization for 'listError[9]')
+include/basic.h:109:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  109 |     /* 10 */ "?Too many nested FOR loops",
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+include/basic.h:109:14: note: (near initialization for 'listError[10]')
+include/basic.h:110:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  110 |     /* 11 */ "?NEXT without FOR",
+      |              ^~~~~~~~~~~~~~~~~~~
+include/basic.h:110:14: note: (near initialization for 'listError[11]')
+include/basic.h:111:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  111 |     /* 12 */ "?Too many nested GOSUBs",
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~
+include/basic.h:111:14: note: (near initialization for 'listError[12]')
+include/basic.h:112:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  112 |     /* 13 */ "?RETURN without GOSUB",
+      |              ^~~~~~~~~~~~~~~~~~~~~~~
+include/basic.h:112:14: note: (near initialization for 'listError[13]')
+include/basic.h:113:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  113 |     /* 14 */ "?Syntax error",
+      |              ^~~~~~~~~~~~~~~
+include/basic.h:113:14: note: (near initialization for 'listError[14]')
+include/basic.h:114:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  114 |     /* 15 */ "?Unbalanced parentheses",
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~
+include/basic.h:114:14: note: (near initialization for 'listError[15]')
+include/basic.h:115:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  115 |     /* 16 */ "?Incompatible types",
+      |              ^~~~~~~~~~~~~~~~~~~~~
+include/basic.h:115:14: note: (near initialization for 'listError[16]')
+include/basic.h:116:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  116 |     /* 17 */ "?Line number expected",
+      |              ^~~~~~~~~~~~~~~~~~~~~~~
+include/basic.h:116:14: note: (near initialization for 'listError[17]')
+include/basic.h:117:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  117 |     /* 18 */ "?Comma Espected",
+      |              ^~~~~~~~~~~~~~~~~
+include/basic.h:117:14: note: (near initialization for 'listError[18]')
+include/basic.h:118:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  118 |     /* 19 */ "?Timeout",
+      |              ^~~~~~~~~~
+include/basic.h:118:14: note: (near initialization for 'listError[19]')
+include/basic.h:119:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  119 |     /* 20 */ "?Load with Errors",
+      |              ^~~~~~~~~~~~~~~~~~~
+include/basic.h:119:14: note: (near initialization for 'listError[20]')
+include/basic.h:120:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  120 |     /* 21 */ "?Size error",
+      |              ^~~~~~~~~~~~~
+include/basic.h:120:14: note: (near initialization for 'listError[21]')
+include/basic.h:121:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  121 |     /* 22 */ "?Out of memory",
+      |              ^~~~~~~~~~~~~~~~
+include/basic.h:121:14: note: (near initialization for 'listError[22]')
+include/basic.h:122:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  122 |     /* 23 */ "?Variable name already exist",
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+include/basic.h:122:14: note: (near initialization for 'listError[23]')
+include/basic.h:123:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  123 |     /* 24 */ "?Wrong mode resolution",
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~
+include/basic.h:123:14: note: (near initialization for 'listError[24]')
+include/basic.h:124:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  124 |     /* 25 */ "?Illegal position",
+      |              ^~~~~~~~~~~~~~~~~~~
+include/basic.h:124:14: note: (near initialization for 'listError[25]')
+include/basic.h:125:14: warning: pointer targets in initialization of 'unsigned char *' from 'char *' differ in signedness [-Wpointer-sign]
+  125 |     /* 26 */ "?Out of data"
+      |              ^~~~~~~~~~~~~~
+include/basic.h:125:14: note: (near initialization for 'listError[26]')
+src/basic.c: In function 'main':
+src/basic.c:78:15: warning: pointer targets in passing argument 1 of '*1058' differ in signedness [-Wpointer-sign]
+   78 |     printText("MMSJ-BASIC v"versionBasic"\r\n");
+      |               ^~~~~~~~~~~~~~
+      |               |
+      |               char *
+src/basic.c:78:15: note: expected 'unsigned char *' but argument is of type 'char *'
+src/basic.c:79:15: warning: pointer targets in passing argument 1 of '*1058' differ in signedness [-Wpointer-sign]
+   79 |     printText("Utility (c) 2022-2026\r\n");
+      |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |               |
+      |               char *
+src/basic.c:79:15: note: expected 'unsigned char *' but argument is of type 'char *'
+src/basic.c:80:15: warning: pointer targets in passing argument 1 of '*1058' differ in signedness [-Wpointer-sign]
+   80 |     printText("OK\r\n");
+      |               ^~~~~~~~
+      |               |
+      |               char *
+src/basic.c:80:15: note: expected 'unsigned char *' but argument is of type 'char *'
+src/basic.c:85:19: warning: assignment to 'long unsigned int' from 'unsigned char *' makes integer from pointer without a cast [-Wint-conversion]
+   85 |     *nextAddrLine = pStartProg;
+      |                   ^
+src/basic.c:107:23: warning: pointer targets in passing argument 1 of '*1058' differ in signedness [-Wpointer-sign]
+  107 |             printText("\r\n");
+      |                       ^~~~~~
+      |                       |
+      |                       char *
+src/basic.c:107:23: note: expected 'unsigned char *' but argument is of type 'char *'
+src/basic.c:109:13: warning: implicit declaration of function 'processLine' [-Wimplicit-function-declaration]
+  109 |             processLine();
+      |             ^~~~~~~~~~~
+src/basic.c:112:27: warning: pointer targets in passing argument 1 of '*1058' differ in signedness [-Wpointer-sign]
+  112 |                 printText("\r\nOK\r\n");   // printText("\r\n>\0");
+      |                           ^~~~~~~~~~~~
+      |                           |
+      |                           char *
+src/basic.c:112:27: note: expected 'unsigned char *' but argument is of type 'char *'
+src/basic.c:116:23: warning: pointer targets in passing argument 1 of '*1058' differ in signedness [-Wpointer-sign]
+  116 |             printText("\r\n");
+      |                       ^~~~~~
+      |                       |
+      |                       char *
+src/basic.c:116:23: note: expected 'unsigned char *' but argument is of type 'char *'
+src/basic.c:120:15: warning: pointer targets in passing argument 1 of '*1058' differ in signedness [-Wpointer-sign]
+  120 |     printText("\r\n");
+      |               ^~~~~~
+      |               |
+      |               char *
+src/basic.c:120:15: note: expected 'unsigned char *' but argument is of type 'char *'
+src/basic.c: In function 'inputLineBasic':
+src/basic.c:131:30: warning: initialization of 'unsigned char *' from incompatible pointer type 'unsigned char (*)[256]' [-Wincompatible-pointer-types]
+  131 |     unsigned char *vbufptr = &vbufInput;
+      |                              ^
+src/basic.c:143:13: warning: assignment to 'unsigned char *' from incompatible pointer type 'unsigned char (*)[256]' [-Wincompatible-pointer-types]
+  143 |     vbufptr = &vbufInput;
+      |             ^
+src/basic.c:149:21: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  149 |         iw = strlen(vbufInput) / 40;
+      |                     ^~~~~~~~~
+      |                     |
+      |                     unsigned char *
+In file included from src/basic.c:45:
+E:/MinGW-m68k-elf/m68k-elf/include/string.h:41:18: note: expected 'const char *' but argument is of type 'unsigned char *'
+   41 | size_t   strlen (const char *);
+      |                  ^~~~~~~~~~~~
+src/basic.c:223:33: warning: comparison of distinct pointer types lacks a cast
+  223 |                     if (vbufptr > &vbufInput + pQtdInput)
+      |                                 ^
+src/basic.c:225:25: warning: value computed is not used [-Wunused-value]
+  225 |                         *vbufptr--;
+      |                         ^~~~~~~~~~
+src/basic.c:239:33: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  239 |                     iw = strlen(vbufInput);
+      |                                 ^~~~~~~~~
+      |                                 |
+      |                                 unsigned char *
+E:/MinGW-m68k-elf/m68k-elf/include/string.h:41:18: note: expected 'const char *' but argument is of type 'unsigned char *'
+   41 | size_t   strlen (const char *);
+      |                  ^~~~~~~~~~~~
+src/basic.c:316:35: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  316 |                 if (iPos < strlen(vbufInput))
+      |                                   ^~~~~~~~~
+      |                                   |
+      |                                   unsigned char *
+E:/MinGW-m68k-elf/m68k-elf/include/string.h:41:18: note: expected 'const char *' but argument is of type 'unsigned char *'
+   41 | size_t   strlen (const char *);
+      |                  ^~~~~~~~~~~~
+src/basic.c:331:29: warning: comparison of distinct pointer types lacks a cast
+  331 |                 if (vbufptr > &vbufInput)
+      |                             ^
+src/basic.c:333:21: warning: value computed is not used [-Wunused-value]
+  333 |                     *vbufptr--;
+      |                     ^~~~~~~~~~
+src/basic.c:342:29: warning: pointer targets in passing argument 1 of 'strlen' differ in signedness [-Wpointer-sign]
+  342 |                 iw = strlen(vbufInput);
+      |                             ^~~~~~~~~
+      |                             |
+      |                             unsigned char *
+E:/MinGW-m68k-elf/m68k-elf/include/string.h:41:18: note: expected 'const char *' but argument is of type 'unsigned char *'
+   41 | size_t   strlen (const char *);
+      |                  ^~~~~~~~~~~~
+src/basic.c:376:32: warning: comparison of distinct pointer types lacks a cast
+  376 |                 while (vbufptr > &vbufInput)
+      |                                ^
+src/basic.c:378:21: warning: value computed is not used [-Wunused-value]
+  378 |                     *vbufptr--;
+      |                     ^~~~~~~~~~
+src/basic.c:136:19: warning: unused variable 'iz' [-Wunused-variable]
+  136 |     int iPos = 0, iz = 0;
+      |                   ^~
+src/basic.c:133:9: warning: unused variable 'vRetProcCmd' [-Wunused-variable]
+  133 |     int vRetProcCmd, iw, ix;
+      |         ^~~~~~~~~~~
+include/basic.h: At top level:
+include/basic.h:98:23: warning: 'listError' defined but not used [-Wunused-variable]
+   98 | static unsigned char *listError[]= {
+      |                       ^~~~~~~~~

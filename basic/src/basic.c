@@ -44,17 +44,22 @@
 #include <ctype.h>
 #include <string.h>
 #include <stdlib.h>
-#include "mmsj320api.h"
-#include "mmsj320vdp.h"
-#include "mmsj320mfp.h"
-#include "monitor.h"
-#include "monitorapi.h"
+#include <mmsj320api.h>
+#include <mmsj320vdp.h>
+#include <mmsj320mfp.h>
+#include <monitor.h>
+#include <monitorapi.h>
 #include "basic.h"
 #include "float_alt_q16.h"
 
 #define versionBasic "1.0e"
 //#define __TESTE_TOKENIZE__ 1
 //#define __DEBUG_ARRAYS__ 1
+
+//-----------------------------------------------------------------------------
+// Protótipos locais
+//-----------------------------------------------------------------------------
+unsigned char inputLineBasic(unsigned int pQtdInput, unsigned char pTipo);
 
 //-----------------------------------------------------------------------------
 // Principal

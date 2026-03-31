@@ -1,0 +1,68 @@
+.text
+.global mgui_func_table
+.extern writesxy
+.extern writecxy
+.extern locatexy
+.extern SaveScreenNew
+.extern RestoreScreen
+.extern SetDot
+.extern SetByte
+.extern FillRect
+.extern DrawLine
+.extern DrawRect
+.extern DrawRoundRect
+.extern DrawCircle
+.extern PutIcone
+.extern InvertRect
+.extern SelRect
+.extern PutImage
+.extern LoadIconLib
+.extern waitButton
+.extern message
+.extern drawButtonsnew
+.extern showWindow
+.extern TrocaSpriteMouse
+.extern MostraIcone
+.extern importFile
+.extern putImagePbmP4
+.extern setPosPressed
+.extern getMouseData
+.extern togglebox
+.extern radioset
+.extern fillin
+.extern getColorData
+.extern button
+
+mgui_func_table:
+    .long writesxy
+    .long writecxy
+    .long locatexy
+    .long SaveScreenNew
+    .long RestoreScreen
+    .long SetDot
+    .long SetByte
+    .long FillRect
+    .long DrawLine
+    .long DrawRect
+    .long DrawRoundRect
+    .long DrawCircle
+    .long PutIcone
+    .long InvertRect
+    .long SelRect
+    .long PutImage
+    .long LoadIconLib
+    .long waitButton
+    .long message
+    .long drawButtonsnew
+    .long showWindow
+    .long TrocaSpriteMouse
+    .long MostraIcone
+    .long importFile
+    .long putImagePbmP4
+    .long setPosPressed
+    .long getMouseData
+    .long togglebox
+    .long radioset
+    .long fillin
+    .long getColorData
+    .long button

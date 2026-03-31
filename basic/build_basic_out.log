@@ -1,0 +1,19 @@
+=== Building BASIC with Q16 backend ===
+
+=== Cleaning old artifacts ===
+rm -f src/*.o *.o *.elf *.bin *.map *.lst ../src/*.o
+
+=== Building BASIC.elf ===
+m68k-elf-gcc -m68000 -Wall -Os -ffreestanding -nostdlib -w -I../include -Iinclude -I.. -ffunction-sections -fdata-sections -fno-unwind-tables -fno-asynchronous-unwind-tables -flto   -c -o ../src/mmsj320mfp.o ../src/mmsj320mfp.c
+m68k-elf-gcc -m68000 -Wall -Os -ffreestanding -nostdlib -w -I../include -Iinclude -I.. -ffunction-sections -fdata-sections -fno-unwind-tables -fno-asynchronous-unwind-tables -flto -c src/basic.c -o src/basic.o
+m68k-elf-gcc -m68000 -Wall -Os -ffreestanding -nostdlib -w -I../include -Iinclude -I.. -ffunction-sections -fdata-sections -fno-unwind-tables -fno-asynchronous-unwind-tables -flto -c src/float_alt_q16.c -o src/float_alt_q16.o
+m68k-elf-gcc -m68000 -Wall -Os -ffreestanding -nostdlib -w -I../include -Iinclude -I.. -ffunction-sections -fdata-sections -fno-unwind-tables -fno-asynchronous-unwind-tables -flto -c src/basic_inic.S -o src/basic_inic.o
+m68k-elf-gcc -T ../linker.ld -nostdlib -Wl,--just-symbols=../monitor.elf -flto -Wl,-Map=basic.map -o basic.elf src/basic_inic.o ../src/mmsj320mfp.o src/basic.o src/float_alt_q16.o -lgcc
+m68k-elf-objcopy -O binary basic.elf basic.bin
+m68k-elf-objdump -x -d basic.elf > basic.lst
+
+=== BASIC build complete ===
+30/03/2026  00:21         9.420.192 basic.elf
+30/03/2026  00:21            32.796 basic.bin
+30/03/2026  00:21             1.426 basic.map
+30/03/2026  00:21            13.122 basic.lst

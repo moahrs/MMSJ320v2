@@ -1,0 +1,11 @@
+rm -f src/*.o *.o *.elf *.bin *.map *.lst ../src/*.o
+m68k-elf-gcc -m68000 -Wall -Os -ffreestanding -nostdlib -w -I../include -Iinclude -I.. -ffunction-sections -fdata-sections -fno-unwind-tables -fno-asynchronous-unwind-tables -flto   -c -o ../src/mmsj320mfp.o ../src/mmsj320mfp.c
+m68k-elf-gcc -m68000 -Wall -Os -ffreestanding -nostdlib -w -I../include -Iinclude -I.. -ffunction-sections -fdata-sections -fno-unwind-tables -fno-asynchronous-unwind-tables -flto -c src/basic.c -o src/basic.o
+src/basic.c:124:15: error: conflicting types for 'inputLineBasic'; have 'unsigned char(unsigned int,  unsigned char)'
+  124 | unsigned char inputLineBasic(unsigned int pQtdInput, unsigned char pTipo)
+      |               ^~~~~~~~~~~~~~
+src/basic.c:98:21: note: previous implicit declaration of 'inputLineBasic' with type 'int()'
+   98 |         vRetInput = inputLineBasic(128,'$');
+      |                     ^~~~~~~~~~~~~~
+make: *** [Makefile:50: src/basic.o] Error 1
+BUILD_FAIL

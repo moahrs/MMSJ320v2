@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "rebuild-monitor",
+			"type": "shell",
+			"command": "cmd",
+			"args": [
+				"/c",
+				"cd /d d:\\Projetos\\MMSJ320v2 && make clean && make all"
+			],
+			"isBackground": false
+		},
+		{
+			"label": "rebuild-monitor-ps",
+			"type": "shell",
+			"command": "Set-Location \"d:\\Projetos\\MMSJ320v2\"; make clean; make all",
+			"isBackground": false
+		}
+	]
+}

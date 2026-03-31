@@ -57,7 +57,7 @@ void AcompanhaGravacao();
 int main(int argc, char *argv[])
 {
   FILE *fp;
-	char xfilebin[100] = "d:\\projetos\\mmsj320\\";
+	char xfilebin[100] = "d:\\projetos\\mmsj320v2\\";
 	int vnumFF = 0, verro, vnumerros, vsendlsb, vsendmsb, vsenddados;
 	unsigned char dados, dadosf;
 	unsigned char dadosrec;

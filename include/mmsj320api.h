@@ -11,22 +11,22 @@
 //typedef unsigned long           DWORD;                          /* 32-bit unsigned */
 
 // Pointers to I/O devices
-unsigned char *vdsk  = 0x00200000; // DISK Arduino Uno, r/w
-unsigned char *vdskc = 0x00200001; // DISK Arduino Uno, r/w Command
-unsigned char *vdskp = 0x00200005; // DISK Arduino Uno, r/w Command Param
-unsigned char *vdskd = 0x00200003; // DISK Arduino Uno, r/w Data
-unsigned char *vdest = 0x00000000; // Endereco destino + endre�o base
+#define vdsk  ((volatile unsigned char *)0x00200000UL) // DISK Arduino Uno, r/w
+#define vdskc ((volatile unsigned char *)0x00200001UL) // DISK Arduino Uno, r/w Command
+#define vdskp ((volatile unsigned char *)0x00200005UL) // DISK Arduino Uno, r/w Command Param
+#define vdskd ((volatile unsigned char *)0x00200003UL) // DISK Arduino Uno, r/w Data
+#define vdest ((volatile unsigned char *)0x00000000UL) // Endereco destino + endereco base
 
 // Pointer to Variables
 // Usando memoria ram de sistema (0x00600000 - 0x0063FFFF) - 256KB
 
-unsigned short *errorBufferAddrBus   = 0x0060F208; // 64 words
+#define errorBufferAddrBus ((volatile unsigned short *)0x0060F208UL) // 64 words
                                  // to 0x0060F288
-unsigned short *traceData            = 0x0060F28A; // 512 words
+#define traceData ((volatile unsigned short *)0x0060F28AUL) // 512 words
                                  // to 0x0060F68A
-unsigned long *tracePointer          = 0x0060F68C;
-unsigned long *traceA7               = 0x0060F692;
-unsigned short *regA7                = 0x0060F696;
+#define tracePointer ((volatile unsigned long *)0x0060F68CUL)
+#define traceA7 ((volatile unsigned long *)0x0060F692UL)
+#define regA7 ((volatile unsigned short *)0x0060F696UL)
 
 /*unsigned char *kbdvprim = 0x00609B3C;
 unsigned char *kbdvmove = 0x00609B3E;

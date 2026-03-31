@@ -30,6 +30,7 @@
 * 10/01/2025  1.2     Moacir Jr.   Integrar com uC/CosII para o MMSJ320
 * 16/01/2025  1.3     Moacir Jr.   Voltar para teclado e mouse com arduino nano
 * 28/01/2025  1.3a    Moacir Jr.   Ajustes na leitura dos dados recebidos do Mouse
+* 28/03/2026  1.4     Moacir Jr.   Troca de compilador, do ide68k para m68k-elf-gcc
 *--------------------------------------------------------------------------------
 *
 * Mapa de Memoria
@@ -103,7 +104,7 @@
 #include "mmsj320mfp.h"
 #include "monitor.h"
 
-#define versionBios "1.3a"
+#define versionBios "1.4"
 
 void *__allocp;
 
