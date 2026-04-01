@@ -1,5 +1,5 @@
 
-ENTRY(_start)
+ENTRY(os_boot_entry)
 
 PHDRS
 {
@@ -15,4 +15,8 @@ SECTIONS
     .rodata : { *(.rodata*) } :text
     .data : { *(.data*) } :data
     .bss (NOLOAD) : { *(.bss*) *(COMMON) } :data
+
+    /* heap: in User RAM at 0x810000, separate from C .bss variables */
+    . = 0x810000;
+    .heapram (NOLOAD) : { *(.heapram) }
 }

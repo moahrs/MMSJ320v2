@@ -231,8 +231,8 @@ void mmsjos_main(void)
 
     showCursor();
 
-    *(vmfp + Reg_IERA) |= 0x01; // Timer B 10ms - Tick OS
-    *(vmfp + Reg_IMRA) |= 0x01; // Timer B 10ms - Tick OS
+    *(vmfp + REG_IERA) |= 0x01; // Timer B 10ms - Tick OS
+    *(vmfp + REG_IMRA) |= 0x01; // Timer B 10ms - Tick OS
 
     // Cria duas Tasks
     OSInit();
@@ -1279,7 +1279,7 @@ void runFromMGUI(unsigned long vEnderExec)
 //-----------------------------------------------------------------------------
 void delayus(int pTimeUS)
 {
-    unsigned int ix;
+    volatile unsigned int ix;
 
     for(ix = 0; ix <= pTimeUS; ix++);    // +/- 1us * pTimeMs parada
 }

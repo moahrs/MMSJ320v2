@@ -14,7 +14,6 @@ SRC_C = \
 	src/monitor.c
 
 SRC_S = \
-	src/boot.S \
 	src/os_boot.S \
 	src/monitor_ram.S \
 	src/monitor_fontes.S
@@ -28,7 +27,7 @@ OBJ = $(SRC_C:.c=.o) $(SRC_S:.S=.o)
 #   monitor.c
 #   monitor_ram.a68 -> monitor_ram.S
 #   monitor_fontes.a68 -> monitor_fontes.S
-# Plus current GCC build glue already used in this repo: boot.S and libc_stub.c.
+# std68k.lib replacement in GCC flow: libc_stub.c.
 LINK_OBJ = \
 	src/os_boot.o \
 	src/mmsj320vdp.o \
@@ -36,7 +35,6 @@ LINK_OBJ = \
 	src/monitor.o \
 	src/monitor_ram.o \
 	src/monitor_fontes.o \
-	src/boot.o \
 	src/libc_stub.o
 
 all: $(OBJ)

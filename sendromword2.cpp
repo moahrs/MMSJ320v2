@@ -96,19 +96,14 @@ int main(int argc, char *argv[])
 	clrscr();
 	
 	// Inicio da Rotina
-    if (showVerb)
-    	printf(">Iniciando Programa��o do Modulo via porta Serial. Usando %s.\n", argv[1]);
-
-    if (showVerb)
-	    printf(">Inicializando Porta Serial (COM4, 19200, 8, N, 1).\n");
+	printf(">Iniciando Programa��o do Modulo via porta Serial. Usando %s.\n", argv[1]);
+	printf(">Inicializando Porta Serial (COM3, 19200, 8, N, 1).\n");
 	IniciaSerial();
 
-	if (showVerb)
-	    printf(">Abrindo Comunica��o.\n");
+	printf(">Abrindo Comunica��o.\n");
 	EnviaComando(0xDD);  // Envia Inicio de Comunica��o: 0xDD + 0xDD
 	
-	if (showVerb)
-	    printf(">Aguardando Confirma��o.\n");
+	printf(">Aguardando Confirma��o.\n");
 	RecebeComando(); // Recebe Confirma��o de Inicio: 0xDD + 0xDD
 	
 	if (RetInput[0] != 0xDD || RetInput[1] != 0xDD)
@@ -117,8 +112,7 @@ int main(int argc, char *argv[])
 	// Gravar Dados
 	if (vnumFF == 0) 
     {
-		if (showVerb)
-	        printf(">Abrindo Arquivo.\n");
+		printf(">Abrindo Arquivo.\n");
   	    strcat(xfilebin,argv[1]);
   	    fp = fopen(xfilebin,"rb");
     
@@ -266,7 +260,7 @@ void delay(unsigned int ttempo)
 
 // inicializa porta serial
 int IniciaSerial(){ 
-	char *NomePorta = "COM4"; //COM1, COM2... 
+	char *NomePorta = "COM3"; //COM1, COM2... 
 
 	hSerial = CreateFile(NomePorta,	 //Nome da porta. 
  						 GENERIC_READ|GENERIC_WRITE, //Para leitura e escrita. 

@@ -39,6 +39,7 @@
 .global _errorPrivV
 .global _errorProc
 .global _traceDebug
+.extern videoFontes
 | Executar SO pre-carregado no endere???o de memoria 0x00800000
 |
 _runSO:
@@ -235,7 +236,7 @@ ERRORLOOP:
        MOVE.w (%a7)+,(%a0)+        | SP to error buffer
        DBRA %d0,ERRORLOOP         | until all bytes copied to buffer error (%a0)
        move.l  #_fontesMatrix,%d1   | colocar endereco da variavel que vai ser de ponteiro para a posicao das fontes apos a compilacao
-       move.l  %d1,0x00611816              | colocar endereco apos a compilacao de onde estao as fontes para VGA
+       move.l  %d1,videoFontes              | colocar endereco apos a compilacao de onde estao as fontes para VGA
        jmp      funcErrorBusAddr
        rte
 _traceDebug:

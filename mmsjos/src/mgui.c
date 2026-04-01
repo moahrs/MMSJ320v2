@@ -32,9 +32,6 @@
 #define versionMgui "0.6"
 #define __EM_OBRAS__ 1
 
-unsigned char *vvdgd = 0x00400041; // VDP TMS9118 Data Mode
-unsigned char *vvdgc = 0x00400043; // VDP TMS9118 Registers/Address Mode
-
 unsigned char memPosConfig; // Config file
 unsigned char *imgsMenuSys = 0x00; // Images PBM 16x16 each icone in order (64 Bytes Each)
 unsigned char vFinalOS; // Atualizar sempre que a compilacao passar desse valor
@@ -1116,6 +1113,7 @@ void startMGI(void) {
     unsigned char* vLoadImage = 0x00;
     int percent;
     long ix;
+    volatile long delay_ix;
     VDP_COLOR cores;
     VDP_COORD cursor;
     unsigned int error_code = OS_ERR_NONE;
@@ -1169,7 +1167,7 @@ void startMGI(void) {
     loadFile("/MGUI/IMAGES/ICOOFF.PBM", (imgsMenuSys + 256));
     writesxy(53,170,1,"      Please Wait...       ",vcorwf,vcorwb);
 
-    for (ix = 0; ix < 99999; ix++);
+    for (delay_ix = 0; delay_ix < 99999; delay_ix++);
 
     vcorwf = VDP_WHITE;
     vcorwb = VDP_TRANSPARENT;
@@ -1453,8 +1451,8 @@ unsigned char editortela(void)
         TrocaSpriteMouse(MOUSE_POINTER);
     }
 
-    /**(vmfp + Reg_IERA) = 0x60;
-    *(vmfp + Reg_IMRA) = 0x60;    */
+    /**(vmfp + REG_IERA) = 0x60;
+    *(vmfp + REG_IMRA) = 0x60;    */
 
     if (readChar() == 0x1B)  // ESC
         vresp = 0x00;
@@ -1564,6 +1562,7 @@ unsigned char message(char* bstr, unsigned char bbutton, unsigned short btime)
 	unsigned short i, ii, iii, xi, yi, xf, xm, yf, ym, pwidth, pheight, xib, yib, xic, yic;
 	unsigned char qtdnl, maxlenstr;
 	unsigned char qtdcstr[8], poscstr[8], cc, dd, vbty = 0;
+    volatile unsigned short delay_cc, delay_dd;
 	unsigned char *bstrptr;
     unsigned char slinha[7][26];
     VDP_COORD cursor;
@@ -1684,8 +1683,8 @@ unsigned char message(char* bstr, unsigned char bbutton, unsigned short btime)
         TrocaSpriteMouse(MOUSE_HOURGLASS);
     }
     else {
-        for (dd = 0; dd <= 10; dd++)
-        for (cc = 0; cc <= btime; cc++);
+        for (delay_dd = 0; delay_dd <= 10; delay_dd++)
+            for (delay_cc = 0; delay_cc <= btime; delay_cc++);
     }
 
     RestoreScreen(vsavescr);

@@ -1,8 +1,5 @@
 #include "mmsj320vdp.h"
 
-unsigned char *vvdgd = 0x00400041; // VDP TMS9118 Data Mode
-unsigned char *vvdgc = 0x00400043; // VDP TMS9118 Registers/Address Mode
-
 unsigned char fgcolor;    // Buffer da VRAM 6KB onde o computador vai trabalhar e a cada interrupcao, sera enviado a VRAM
 unsigned char bgcolor; // QTD de BYTES no eixo X (COLS) a srem enviados pra VRAM
 unsigned char videoBufferQtdY; // QTD de BYTES no eixo Y (Rows) a serem enviados pra VRAM

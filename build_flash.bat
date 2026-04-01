@@ -6,7 +6,7 @@ echo  MMSJ320v2 BIOS - Build + Flash Preparation
 echo ============================================
 
 echo.
-echo [1/3] Building...
+echo [1/2] Building...
 make clean
 make -B
 if errorlevel 1 (
@@ -17,8 +17,8 @@ if errorlevel 1 (
 )
 
 echo.
-echo [2/3] Converting ELF to binary...
-E:\MinGW-m68k-elf\bin\m68k-elf-objcopy.exe -O binary monitor.elf monitor.bin
+echo [2/2] Converting ELF to binary...
+m68k-elf-objcopy -O binary monitor.elf monitor.bin
 if errorlevel 1 (
     echo.
     echo OBJCOPY FAILED!

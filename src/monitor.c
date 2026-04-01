@@ -203,8 +203,10 @@ void main(void)
 {
     unsigned short *xaddr = (unsigned short *) 0x00600000;
     unsigned short vbytepic = 0, xdado;
-    unsigned int ix = 0, xcounter = 0;
-    unsigned char sqtdtam[10];
+    volatile unsigned int ix = 0;
+    unsigned int xcounter = 0;
+    unsigned int free_kbytes = 0;
+    unsigned char sqtdtam[20];
     unsigned char vRamSyst1st = 1, vRamUser1st = 1;
 
     // Inicia com Basic
@@ -220,57 +222,57 @@ void main(void)
     vBufXmitEmpty = 1;
 
     // Setup Timers
-    *(vmfp + Reg_TACR)  = 0x10; // Stop Counter Timer A
-    *(vmfp + Reg_TBCR)  = 0x10; // Stop Counter Timer A
+    *(vmfp + REG_TACR)  = 0x10; // Stop Counter Timer A
+    *(vmfp + REG_TBCR)  = 0x10; // Stop Counter Timer A
 
-    while(*(vmfp + Reg_TADR) != 0x9A)
-        *(vmfp + Reg_TADR)  = 0x9A; // Valor para 1 ms
+    while(*(vmfp + REG_TADR) != 0x9A)
+        *(vmfp + REG_TADR)  = 0x9A; // Valor para 1 ms
 
-    *(vmfp + Reg_TACR)  = 0x13; // Start Counter Timer A Com Delay por 16
+    *(vmfp + REG_TACR)  = 0x13; // Start Counter Timer A Com Delay por 16
 
-    while(*(vmfp + Reg_TBDR) != 0xF6)
-        *(vmfp + Reg_TBDR)  = 0xF6; // Valor para 10 ms
+    while(*(vmfp + REG_TBDR) != 0xF6)
+        *(vmfp + REG_TBDR)  = 0xF6; // Valor para 10 ms
 
-    *(vmfp + Reg_TBCR)  = 0x16; // Start Counter Timer B Com Delay por 100
+    *(vmfp + REG_TBCR)  = 0x16; // Start Counter Timer B Com Delay por 100
 
-    *(vmfp + Reg_TCDR)  = 0x02;
-    *(vmfp + Reg_TDDR)  = 0x02;
-    *(vmfp + Reg_TCDCR) = 0x11;
+    *(vmfp + REG_TCDR)  = 0x02;
+    *(vmfp + REG_TDDR)  = 0x02;
+    *(vmfp + REG_TCDCR) = 0x11;
 
     // Setup Interruptions
-    *(vmfp + Reg_VR)    = 0xA0; // vector = 0xA msb = 0x1010 and lsb = 0x0000 auto end session interrupt ///// antigo = lsb = 0x1000 software end session interrupt
-    *(vmfp + Reg_IERA)  = 0x00; // disable all at start
-    *(vmfp + Reg_IERB)  = 0x00; // disable all at start
-    *(vmfp + Reg_IMRA)  = 0x00; // disable all at start
-    *(vmfp + Reg_IMRB)  = 0x00; // disable all at start
-    *(vmfp + Reg_ISRA)  = 0x00; // disable all at start
-    *(vmfp + Reg_ISRB)  = 0x00; // disable all at start
+    *(vmfp + REG_VR)    = 0xA0; // vector = 0xA msb = 0x1010 and lsb = 0x0000 auto end session interrupt ///// antigo = lsb = 0x1000 software end session interrupt
+    *(vmfp + REG_IERA)  = 0x00; // disable all at start
+    *(vmfp + REG_IERB)  = 0x00; // disable all at start
+    *(vmfp + REG_IMRA)  = 0x00; // disable all at start
+    *(vmfp + REG_IMRB)  = 0x00; // disable all at start
+    *(vmfp + REG_ISRA)  = 0x00; // disable all at start
+    *(vmfp + REG_ISRB)  = 0x00; // disable all at start
 
     // Setup Serial = 9600, 8, 1, n
-    *(vmfp + Reg_UCR)   = 0x88;
-    *(vmfp + Reg_RSR)   = 0x01;
-    *(vmfp + Reg_TSR)   = 0x21;
+    *(vmfp + REG_UCR)   = 0x88;
+    *(vmfp + REG_RSR)   = 0x01;
+    *(vmfp + REG_TSR)   = 0x21;
 
     // Setup GPIO
     #ifdef __KEYPS2__
-        *(vmfp + Reg_DDR)   = 0x10; // I4 as Output, I7 - I5 e I3 - I0 as Input
+        *(vmfp + REG_DDR)   = 0x10; // I4 as Output, I7 - I5 e I3 - I0 as Input
     #endif
 
     #ifdef __KEYPS2_EXT__
-        *(vmfp + Reg_DDR)   = 0x10; // I4 as Output, I7 - I5 e I3 - I0 as Input
+        *(vmfp + REG_DDR)   = 0x10; // I4 as Output, I7 - I5 e I3 - I0 as Input
     #endif
 
-    *(vmfp + Reg_AER)   = 0x00; // All Interrupts transction 1 to 0
+    *(vmfp + REG_AER)   = 0x00; // All Interrupts transction 1 to 0
 
     // Setup Interruptions
-    *(vmfp + Reg_IERA)  = 0x00; // 0xCE; // serial interrupt (buffer full and empty) i7 = Clock PS2 Mouse, I6 = Clock PS2 KeyBoard (clk pin OR DTRDY pin)
-    *(vmfp + Reg_IERB)  = 0x00;
-    *(vmfp + Reg_IMRA)  = 0x00; // 0xCE; // serial interrupt (buffer full and empty) i7 = Clock PS2 Mouse, I6 = Clock PS2 KeyBoard (clk pin OR DTRDY pin)
-    *(vmfp + Reg_IMRB)  = 0x00;
+    *(vmfp + REG_IERA)  = 0x00; // 0xCE; // serial interrupt (buffer full and empty) i7 = Clock PS2 Mouse, I6 = Clock PS2 KeyBoard (clk pin OR DTRDY pin)
+    *(vmfp + REG_IERB)  = 0x00;
+    *(vmfp + REG_IMRA)  = 0x00; // 0xCE; // serial interrupt (buffer full and empty) i7 = Clock PS2 Mouse, I6 = Clock PS2 KeyBoard (clk pin OR DTRDY pin)
+    *(vmfp + REG_IMRB)  = 0x00;
     //---------------------------------------------
 
     #ifdef __KEYPS2_EXT__
-        *(vmfp + Reg_GPDR) |= 0x10;  // Seta CS = 1 (I4) do controlador
+        *(vmfp + REG_GPDR) |= 0x10;  // Seta CS = 1 (I4) do controlador
     #endif
 
     //---------------------------------------------
@@ -373,8 +375,11 @@ void main(void)
     itoa(xcounter, sqtdtam, 10);
     printText(sqtdtam);
     printText("K Bytes Found. ");
-    xcounter = xcounter - 256;
-    itoa(xcounter, sqtdtam, 10);
+    if (xcounter > 256)
+        free_kbytes = xcounter - 256;
+    else
+        free_kbytes = 0;
+    itoa(free_kbytes, sqtdtam, 10);
     printText(sqtdtam);
     printText("K Bytes Free.\r\n\0");
 
@@ -417,8 +422,8 @@ void main(void)
         MseMovBuffer[0] = 0x00;
 
         // Ativando Interrupcao do Kbd/Mse PS/2
-        *(vmfp + Reg_IERA) = 0xC0; // GPI6 and 7 will be KBD/MSE PS2 interrupt (clk pin OR DTRDYK/M pin)
-        *(vmfp + Reg_IMRA) = 0xC0; // GPI6 and 7 will be KBD/MSE PS2 interrupt (clk pin OR DTRDYK/M pin)
+        *(vmfp + REG_IERA) = 0xC0; // GPI6 and 7 will be KBD/MSE PS2 interrupt (clk pin OR DTRDYK/M pin)
+        *(vmfp + REG_IMRA) = 0xC0; // GPI6 and 7 will be KBD/MSE PS2 interrupt (clk pin OR DTRDYK/M pin)
     #endif
 
     #ifdef __MOUSEPS2__
@@ -1118,9 +1123,9 @@ unsigned char readChar(void)
     #ifdef __MON_SERIAL_KBD__
         if (vBufReceived == 0x00)
         {
-            if ((*(vmfp + Reg_RSR) & 0x80))  // Se buffer de recepcao cheio
+            if ((*(vmfp + REG_RSR) & 0x80))  // Se buffer de recepcao cheio
             {
-                vBufReceived = *(vmfp + Reg_UDR);
+                vBufReceived = *(vmfp + REG_UDR);
             }
         }
     #endif
@@ -1640,8 +1645,8 @@ void dumpMemWin (unsigned char *pEnder, unsigned char *pqtd, unsigned char *pCol
 //-----------------------------------------------------------------------------
 void writeSerial(unsigned char pchr)
 {
-    while(!(*(vmfp + Reg_TSR) & 0x80));  // Aguarda buffer de transmissao estar vazio
-    *(vmfp + Reg_UDR) = pchr;
+    while(!(*(vmfp + REG_TSR) & 0x80));  // Aguarda buffer de transmissao estar vazio
+    *(vmfp + REG_UDR) = pchr;
     vBufXmitEmpty = 0;     // Indica que o buffer de transmissao esta cheio
 }
 
@@ -1687,7 +1692,7 @@ unsigned char loadSerialToMem(unsigned char *pEndStart, unsigned char ptipo)
         printText("Receiving. <Esc> to Cancel... \r\n\0");
 
     // Desabilita Timers and Mouse Interruption
-//    *(vmfp + Reg_IERA) &= 0x5E;
+//    *(vmfp + REG_IERA) &= 0x5E;
 
     vSizeTotalRec = 0;
     kbdKeyBuffer[kbdKeyPtrR] = 0x00;
@@ -1730,7 +1735,7 @@ unsigned char loadSerialToMem(unsigned char *pEndStart, unsigned char ptipo)
             vAnim++;
         }
 
-        while(!(*(vmfp + Reg_RSR) & 0x80))
+        while(!(*(vmfp + REG_RSR) & 0x80))
         {
             if (kbdKeyBuffer[kbdKeyPtrR] == 0x1B)  // ESC
                 break;
@@ -1739,13 +1744,13 @@ unsigned char loadSerialToMem(unsigned char *pEndStart, unsigned char ptipo)
             {
                 if ((vTimeout % 100000) == 0) // +/- 10s
                 {
-                    //*(vmfp + Reg_GPDR) = 0x01;
+                    //*(vmfp + REG_GPDR) = 0x01;
 
                     writeSerial(0x15);    // Send NACK to start
                 }
                 /*else
                 {
-                    *(vmfp + Reg_GPDR) = 0x01;
+                    *(vmfp + REG_GPDR) = 0x01;
                 }*/
             }
 
@@ -1763,7 +1768,7 @@ unsigned char loadSerialToMem(unsigned char *pEndStart, unsigned char ptipo)
         if (vTimeout > 3000000)
             break;
 
-        inputBuffer = *(vmfp + Reg_UDR);
+        inputBuffer = *(vmfp + REG_UDR);
 
         if (vinicio == 0 && inputBuffer == 0x04)    // Primeiro byte eh EOT
         {
@@ -1772,7 +1777,7 @@ unsigned char loadSerialToMem(unsigned char *pEndStart, unsigned char ptipo)
         }
         else if (vinicio < 3)
         {
-            //*(vmfp + Reg_GPDR) = 0x04;
+            //*(vmfp + REG_GPDR) = 0x04;
 
             vHeader[vinicio] = inputBuffer;
 
@@ -1794,20 +1799,20 @@ unsigned char loadSerialToMem(unsigned char *pEndStart, unsigned char ptipo)
         }
         else if (vinicio == 131)
         {
-            //*(vmfp + Reg_GPDR) = 0x05;
+            //*(vmfp + REG_GPDR) = 0x05;
 
             vinicio = 0;
             vchecksum = inputBuffer;
             if ((vchecksumcalc % 256) != vchecksum)
             {
-                //*(vmfp + Reg_GPDR) = 0x00;
+                //*(vmfp + REG_GPDR) = 0x00;
                 verro = 1;
                 vEndSave = vEndOld;
                 writeSerial(0x15);    // Send NACK
             }
             else
             {
-                //*(vmfp + Reg_GPDR) = 0x01;
+                //*(vmfp + REG_GPDR) = 0x01;
                 writeSerial(0x06);    // Send ACK
             }
         }
@@ -1830,7 +1835,7 @@ unsigned char loadSerialToMem(unsigned char *pEndStart, unsigned char ptipo)
     printText("\r\n\0");
 
     // Habilita Timers Interruption
-//    *(vmfp + Reg_IERA) |= 0x61;
+//    *(vmfp + REG_IERA) |= 0x61;
 
     if (vTimeout > 3000000)
     {
@@ -2049,7 +2054,7 @@ void carregaOSDisk(void)
 //-----------------------------------------------------------------------------
 void delayms(int pTimeMS)
 {
-    unsigned int ix;
+    volatile unsigned int ix;
     unsigned int iTempo = (100 * pTimeMS);
 
     for(ix = 0; ix <= iTempo; ix++);    // +/- 1ms * pTimeMs parada
@@ -2058,7 +2063,7 @@ void delayms(int pTimeMS)
 //-----------------------------------------------------------------------------
 void delayus(int pTimeUS)
 {
-    unsigned int ix;
+    volatile unsigned int ix;
 
     pTimeUS /= 4;
 
@@ -2258,42 +2263,42 @@ void sendByte(unsigned char b)
     unsigned char t = 0;
 
     // Desabilita KBD and VDP Interruption
-    *(vmfp + Reg_IERA) &= 0x3E;
+    *(vmfp + REG_IERA) &= 0x3E;
 
-    *(vmfp + Reg_GPDR) &= 0xBF; // Zera Clock (I6)
-    *(vmfp + Reg_DDR)  |= 0x40; // I6 as Output
-
-    delayus(125);
-
-    *(vmfp + Reg_GPDR) &= 0xFE; // Zera Data (I0)
-    *(vmfp + Reg_DDR)  |= 0x01; // I0 as Output
+    *(vmfp + REG_GPDR) &= 0xBF; // Zera Clock (I6)
+    *(vmfp + REG_DDR)  |= 0x40; // I6 as Output
 
     delayus(125);
 
-    *(vmfp + Reg_DDR)  &= 0xBF; // I6 as Input
+    *(vmfp + REG_GPDR) &= 0xFE; // Zera Data (I0)
+    *(vmfp + REG_DDR)  |= 0x01; // I0 as Output
+
+    delayus(125);
+
+    *(vmfp + REG_DDR)  &= 0xBF; // I6 as Input
 
     for(a = 0; a < 8; a++) {
         t = (b >> a) & 0x01;
 
-        while ((*(vmfp + Reg_GPDR) & 0x40) == 0x40); //wait clock for 0
+        while ((*(vmfp + REG_GPDR) & 0x40) == 0x40); //wait clock for 0
 
-        *(vmfp + Reg_GPDR) |= t;
+        *(vmfp + REG_GPDR) |= t;
 
         if (t) p++;
 
-        while ((*(vmfp + Reg_GPDR) & 0x40) == 0x00); //wait clock for 1
+        while ((*(vmfp + REG_GPDR) & 0x40) == 0x00); //wait clock for 1
     }
 
-    while((*(vmfp + Reg_GPDR) & 0x40) == 0x40); //wait clock for 0
-    *(vmfp + Reg_GPDR) |= p & 0x01;
-    while((*(vmfp + Reg_GPDR) & 0x40) == 0x00); //wait clock for 1
+    while((*(vmfp + REG_GPDR) & 0x40) == 0x40); //wait clock for 0
+    *(vmfp + REG_GPDR) |= p & 0x01;
+    while((*(vmfp + REG_GPDR) & 0x40) == 0x00); //wait clock for 1
 
-    *(vmfp + Reg_DDR)  &= 0xFE; // I0 as Input
-    while((*(vmfp + Reg_GPDR) & 0x01) == 0x01); //wait data for 0
-    while((*(vmfp + Reg_GPDR) & 0x40) == 0x40); //wait clock for 0
+    *(vmfp + REG_DDR)  &= 0xFE; // I0 as Input
+    while((*(vmfp + REG_GPDR) & 0x01) == 0x01); //wait data for 0
+    while((*(vmfp + REG_GPDR) & 0x40) == 0x40); //wait clock for 0
 
     // Habilita KBD and VDP Interruption
-    *(vmfp + Reg_IERA) |= 0xC0;*/
+    *(vmfp + REG_IERA) |= 0xC0;*/
 }
 #endif
 
@@ -2347,7 +2352,7 @@ void funcIntMfpGpi0(void)
 {
     // TBD
 
-    *(vmfp + Reg_ISRB) &= 0xFE;  // Reseta flag de interrupcao GPI0 no MFP
+    *(vmfp + REG_ISRB) &= 0xFE;  // Reseta flag de interrupcao GPI0 no MFP
 }
 
 //-----------------------------------------------------------------------------
@@ -2408,8 +2413,8 @@ void funcIntMfpXmitErr(void)
 void funcIntMfpXmitBufEmpty(void)
 {
     vBufXmitEmpty = 1; // Buffer Transmissao Vazio
-    //*(vmfp + Reg_GPDR) = 0x05;
-//    *(vmfp + Reg_ISRA) &= 0xFB; // Reseta flag de interrupcao no MFP
+    //*(vmfp + REG_GPDR) = 0x05;
+//    *(vmfp + REG_ISRA) &= 0xFB; // Reseta flag de interrupcao no MFP
 }
 
 //-----------------------------------------------------------------------------
@@ -2421,8 +2426,8 @@ void funcIntMfpRecErr(void)
 //-----------------------------------------------------------------------------
 void funcIntMfpRecBufFull(void)
 {
-    vBufReceived = *(vmfp + Reg_UDR);   // Carrega byte do buffer do MFP
-//    *(vmfp + Reg_ISRA) &= 0xEF;  // Reseta flag de interrupcao no MFP
+    vBufReceived = *(vmfp + REG_UDR);   // Carrega byte do buffer do MFP
+//    *(vmfp + REG_ISRA) &= 0xEF;  // Reseta flag de interrupcao no MFP
 }
 
 //-----------------------------------------------------------------------------
@@ -2431,7 +2436,7 @@ void funcIntMfpTmrA(void)
     SysClockms = SysClockms + 1;
 
     // Reseta flag de interrupcao no MFP do Timer A
-//    *(vmfp + Reg_ISRA) &= 0xDF;
+//    *(vmfp + REG_ISRA) &= 0xDF;
 }
 
 //-----------------------------------------------------------------------------
@@ -2449,22 +2454,22 @@ void funcIntMfpGpi6(void)
         {
             vTimeout = 0x0FF;
 
-            *(vmfp + Reg_GPDR) &= 0xEF;  // Seta CS (I4) = 0 do controlador e/ou indicando que ja leu MSB
-            while (*(vmfp + Reg_GPDR) & 0x20 && vTimeout) vTimeout--; // Aguarda Controlador liberar LSB para leitura
-            decoded = *(vmfp + Reg_GPDR) & 0x0F;
+            *(vmfp + REG_GPDR) &= 0xEF;  // Seta CS (I4) = 0 do controlador e/ou indicando que ja leu MSB
+            while (*(vmfp + REG_GPDR) & 0x20 && vTimeout) vTimeout--; // Aguarda Controlador liberar LSB para leitura
+            decoded = *(vmfp + REG_GPDR) & 0x0F;
 
             vTimeout = 0x0FF;
 
-            *(vmfp + Reg_GPDR) |= 0x10;  // Seta CS (I4) = 1 do controlador indicando que ja leu LSB
-            while (!(*(vmfp + Reg_GPDR) & 0x20) && vTimeout) vTimeout--; // Aguarda Controlador liberar MSB para leitura
-            decoded |= ((*(vmfp + Reg_GPDR) & 0x0F) << 4);
+            *(vmfp + REG_GPDR) |= 0x10;  // Seta CS (I4) = 1 do controlador indicando que ja leu LSB
+            while (!(*(vmfp + REG_GPDR) & 0x20) && vTimeout) vTimeout--; // Aguarda Controlador liberar MSB para leitura
+            decoded |= ((*(vmfp + REG_GPDR) & 0x0F) << 4);
 
             if (!vTimeout)
             {
                 if (debugMessages)
                     writeLongSerial("Aqui 0.1\r\n\0");
 
-                *(vmfp + Reg_GPDR) &= 0xEF;  // Seta CS (I4) = 0 do controlador e/ou indicando que ja leu MSB
+                *(vmfp + REG_GPDR) &= 0xEF;  // Seta CS (I4) = 0 do controlador e/ou indicando que ja leu MSB
                 break;
             }
 
@@ -2478,10 +2483,10 @@ void funcIntMfpGpi6(void)
                     kbdKeyPtrW = 0;
             }
 
-            *(vmfp + Reg_GPDR) &= 0xEF;  // Seta CS (I4) = 0 do controlador e/ou indicando que ja leu MSB
+            *(vmfp + REG_GPDR) &= 0xEF;  // Seta CS (I4) = 0 do controlador e/ou indicando que ja leu MSB
         }
 
-        *(vmfp + Reg_GPDR) |= 0x10;  // Seta CS = 1 (I4) do controlador
+        *(vmfp + REG_GPDR) |= 0x10;  // Seta CS = 1 (I4) do controlador
 
         if (debugMessages)
             writeLongSerial("Aqui 1\r\n\0");
@@ -2504,7 +2509,7 @@ void funcIntMfpGpi6(void)
             {
                 // No 11 bits received yet: add to the scancode [start][d0...d7][parity][stop]
                 scanCode = (scanCode >> 1);
-                scanCode = scanCode | ((*(vmfp + Reg_GPDR) & 0x01) << 7);
+                scanCode = scanCode | ((*(vmfp + REG_GPDR) & 0x01) << 7);
             }
 
             if (*kbdClockCount == 10)
@@ -2549,7 +2554,7 @@ void funcIntMfpGpi6(void)
     #endif
 
     // Reseta flag de interrupcao no MFP do I6
-//    *(vmfp + Reg_ISRA) &= 0xBF;
+//    *(vmfp + REG_ISRA) &= 0xBF;
 }
 
 //-----------------------------------------------------------------------------
@@ -2565,30 +2570,30 @@ void funcIntMfpGpi7(void)
         // Pega dados do controlador via protocolo
         while (1)
         {
-            if (*(vmfp + Reg_GPDR) & 0x80)
+            if (*(vmfp + REG_GPDR) & 0x80)
             {
                 break;
             }
 
             vTimeout = 0xFF;
 
-            *(vmfp + Reg_GPDR) &= 0xEF;  // Seta CS (I4) = 0 do controlador e/ou indicando que ja leu MSB
-            while (*(vmfp + Reg_GPDR) & 0x20 && vTimeout) vTimeout--; // Aguarda Controlador liberar LSB para leitura
-            decoded = *(vmfp + Reg_GPDR) & 0x0F;
+            *(vmfp + REG_GPDR) &= 0xEF;  // Seta CS (I4) = 0 do controlador e/ou indicando que ja leu MSB
+            while (*(vmfp + REG_GPDR) & 0x20 && vTimeout) vTimeout--; // Aguarda Controlador liberar LSB para leitura
+            decoded = *(vmfp + REG_GPDR) & 0x0F;
 
             if (vTimeout)
                 vTimeout = 0xFF;
 
-            *(vmfp + Reg_GPDR) |= 0x10;  // Seta CS (I4) = 1 do controlador indicando que ja leu LSB
-            while (!(*(vmfp + Reg_GPDR) & 0x20) && vTimeout) vTimeout--; // Aguarda Controlador liberar MSB para leitura
-            decoded |= ((*(vmfp + Reg_GPDR) & 0x0F) << 4);
+            *(vmfp + REG_GPDR) |= 0x10;  // Seta CS (I4) = 1 do controlador indicando que ja leu LSB
+            while (!(*(vmfp + REG_GPDR) & 0x20) && vTimeout) vTimeout--; // Aguarda Controlador liberar MSB para leitura
+            decoded |= ((*(vmfp + REG_GPDR) & 0x0F) << 4);
 
             if (!vTimeout)
             {
                 if (debugMessages)
                     writeLongSerial("Aqui 2.1\r\n\0");
 
-                *(vmfp + Reg_GPDR) &= 0xEF;  // Seta CS (I4) = 0 do controlador e/ou indicando que ja leu MSB
+                *(vmfp + REG_GPDR) &= 0xEF;  // Seta CS (I4) = 0 do controlador e/ou indicando que ja leu MSB
                 break;
             }
 
@@ -2599,10 +2604,10 @@ void funcIntMfpGpi7(void)
             if (MseMovPtrW > kbdKeyBuffMax)
                 MseMovPtrW = 0;
 
-            *(vmfp + Reg_GPDR) &= 0xEF;  // Seta CS (I4) = 0 do controlador e/ou indicando que ja leu MSB
+            *(vmfp + REG_GPDR) &= 0xEF;  // Seta CS (I4) = 0 do controlador e/ou indicando que ja leu MSB
         }
 
-        *(vmfp + Reg_GPDR) |= 0x10;  // Seta CS = 1 (I4) do controlador
+        *(vmfp + REG_GPDR) |= 0x10;  // Seta CS = 1 (I4) do controlador
 
         // Verifica se ao final, o cursor de gravacao é modulo 3, ou seja, sempre entrou 3 dados do mouse
         // Se nao for modulo 3, volta até ser modulo 3.
@@ -2804,20 +2809,33 @@ void flushMsePs2 (void)
 //-----------------------------------------------------------------------------
 void funcZeroesLeft(unsigned char* buffer, unsigned char vTam)
 {
-    unsigned char vbuffer[20], i, j;
+    unsigned char vbuffer[20];
+    unsigned char pad;
+    unsigned char len;
 
-    if (vTam < strlen(vbuffer))
-        vTam = strlen(vbuffer);
+    if (buffer == NULL)
+        return;
 
-    strcpy(vbuffer,buffer);
-    for (i=0; i<(vTam-strlen(vbuffer));i++) {
-        buffer[i]='0';
+    if (vTam == 0)
+        return;
+
+    if (vTam >= sizeof(vbuffer))
+        vTam = (unsigned char)(sizeof(vbuffer) - 1);
+
+    strncpy((char *)vbuffer, (char *)buffer, sizeof(vbuffer) - 1);
+    vbuffer[sizeof(vbuffer) - 1] = '\0';
+
+    len = (unsigned char)strlen((char *)vbuffer);
+    if (len >= vTam)
+    {
+        strncpy((char *)buffer, (char *)vbuffer, vTam);
+        buffer[vTam] = '\0';
+        return;
     }
-    for(j=0;j<strlen(vbuffer);j++){
-        buffer[i] = vbuffer[j];
-        i++;
-        buffer[i] = 0x00;
-    }
+
+    pad = (unsigned char)(vTam - len);
+    memset(buffer, '0', pad);
+    strcpy((char *)(buffer + pad), (char *)vbuffer);
 }
 
 //-----------------------------------------------------------------------------

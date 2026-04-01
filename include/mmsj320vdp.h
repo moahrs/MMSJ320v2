@@ -32,8 +32,8 @@ typedef struct
     unsigned int color;
 } VDP_MODE_SETUP;
 
-extern unsigned char *vvdgd; // VDP TMS9118 Data Mode
-extern unsigned char *vvdgc; // VDP TMS9118 Registers/Address Mode
+#define vvdgd ((volatile unsigned char *)0x00400041UL) // VDP TMS9118 Data Mode
+#define vvdgc ((volatile unsigned char *)0x00400043UL) // VDP TMS9118 Registers/Address Mode
 
 extern unsigned char fgcolor;    // Buffer da VRAM 6KB onde o computador vai trabalhar e a cada interrupcao, sera enviado a VRAM
 extern unsigned char bgcolor; // QTD de BYTES no eixo X (COLS) a srem enviados pra VRAM

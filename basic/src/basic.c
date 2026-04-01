@@ -70,8 +70,8 @@ void main(void)
     VDP_COLOR vdpcolor;
 
     // Timer para o Random
-    *(vmfp + Reg_TADR) = 0xF5;  // 245
-    *(vmfp + Reg_TACR) = 0x02;  // prescaler de 10. total 2,4576Mhz/10*245 = 1003KHz
+    *(vmfp + REG_TADR) = 0xF5;  // 245
+    *(vmfp + REG_TACR) = 0x02;  // prescaler de 10. total 2,4576Mhz/10*245 = 1003KHz
 
     clearScr();
 

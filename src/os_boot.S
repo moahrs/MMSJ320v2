@@ -33,6 +33,7 @@
            .global        __getch
            .global        __ungetbuf
            .global        __kbhit
+           .global        os_boot_entry
 
 |********************************************************************************************************
 
@@ -200,105 +201,24 @@
            .long        0               | Vector #157, 0x00000274: User Defined Vector
            .long        0               | Vector #158, 0x00000278: User Defined Vector
            .long        0               | Vector #159, 0x0000027C: User Defined Vector
-           .long        0               | Vector #160, 0x00000280: User Defined Vector
-           .long        0               | Vector #161, 0x00000284: User Defined Vector
-           .long        0               | Vector #162, 0x00000288: User Defined Vector
-           .long        0               | Vector #163, 0x0000028C: User Defined Vector
-           .long        0               | Vector #164, 0x00000290: User Defined Vector
-           .long        0               | Vector #165, 0x00000294: User Defined Vector
-           .long        0               | Vector #166, 0x00000298: User Defined Vector
-           .long        0               | Vector #167, 0x0000029C: User Defined Vector
-           .long        0               | Vector #168, 0x000002A0: User Defined Vector
-           .long        0               | Vector #169, 0x000002A4: User Defined Vector
-           .long        0               | Vector #170, 0x000002A8: User Defined Vector
-           .long        0               | Vector #171, 0x000002AC: User Defined Vector
-           .long        0               | Vector #172, 0x000002B0: User Defined Vector
-           .long        0               | Vector #173, 0x000002B4: User Defined Vector
-           .long        0               | Vector #174, 0x000002B8: User Defined Vector
-           .long        0               | Vector #175, 0x000002BC: User Defined Vector
-           .long        0               | Vector #176, 0x000002C0: User Defined Vector
-           .long        0               | Vector #177, 0x000002C4: User Defined Vector
-           .long        0               | Vector #178, 0x000002C8: User Defined Vector
-           .long        0               | Vector #179, 0x000002CC: User Defined Vector
-           .long        0               | Vector #180, 0x000002D0: User Defined Vector
-           .long        0               | Vector #181, 0x000002D4: User Defined Vector
-           .long        0               | Vector #182, 0x000002D8: User Defined Vector
-           .long        0               | Vector #183, 0x000002DC: User Defined Vector
-           .long        0               | Vector #184, 0x000002E0: User Defined Vector
-           .long        0               | Vector #185, 0x000002E4: User Defined Vector
-           .long        0               | Vector #186, 0x000002E8: User Defined Vector
-           .long        0               | Vector #187, 0x000002EC: User Defined Vector
-           .long        0               | Vector #188, 0x000002F0: User Defined Vector
-           .long        0               | Vector #189, 0x000002F4: User Defined Vector
-           .long        0               | Vector #190, 0x000002F8: User Defined Vector
-           .long        0               | Vector #191, 0x000002FC: User Defined Vector
-           .long        0               | Vector #192, 0x00000300: User Defined Vector
-           .long        0               | Vector #193, 0x00000304: User Defined Vector
-           .long        0               | Vector #194, 0x00000308: User Defined Vector
-           .long        0               | Vector #195, 0x0000030C: User Defined Vector
-           .long        0               | Vector #196, 0x00000310: User Defined Vector
-           .long        0               | Vector #197, 0x00000314: User Defined Vector
-           .long        0               | Vector #198, 0x00000318: User Defined Vector
-           .long        0               | Vector #199, 0x0000031C: User Defined Vector
-           .long        0               | Vector #200, 0x00000320: User Defined Vector
-           .long        0               | Vector #201, 0x00000324: User Defined Vector
-           .long        0               | Vector #202, 0x00000328: User Defined Vector
-           .long        0               | Vector #203, 0x0000032C: User Defined Vector
-           .long        0               | Vector #204, 0x00000330: User Defined Vector
-           .long        0               | Vector #205, 0x00000334: User Defined Vector
-           .long        0               | Vector #206, 0x00000338: User Defined Vector
-           .long        0               | Vector #207, 0x0000033C: User Defined Vector
-           .long        0               | Vector #208, 0x00000340: User Defined Vector
-           .long        0               | Vector #209, 0x00000344: User Defined Vector
-           .long        0               | Vector #210, 0x00000348: User Defined Vector
-           .long        0               | Vector #211, 0x0000034C: User Defined Vector
-           .long        0               | Vector #212, 0x00000350: User Defined Vector
-           .long        0               | Vector #213, 0x00000354: User Defined Vector
-           .long        0               | Vector #214, 0x00000358: User Defined Vector
-           .long        0               | Vector #215, 0x0000035C: User Defined Vector
-           .long        0               | Vector #216, 0x00000360: User Defined Vector
-           .long        0               | Vector #217, 0x00000364: User Defined Vector
-           .long        0               | Vector #218, 0x00000368: User Defined Vector
-           .long        0               | Vector #219, 0x0000036C: User Defined Vector
-           .long        0               | Vector #220, 0x00000370: User Defined Vector
-           .long        0               | Vector #221, 0x00000374: User Defined Vector
-           .long        0               | Vector #222, 0x00000378: User Defined Vector
-           .long        0               | Vector #223, 0x0000037C: User Defined Vector
-           .long        0               | Vector #224, 0x00000380: User Defined Vector
-           .long        0               | Vector #225, 0x00000384: User Defined Vector
-           .long        0               | Vector #226, 0x00000388: User Defined Vector
-           .long        0               | Vector #227, 0x0000038C: User Defined Vector
-           .long        0               | Vector #228, 0x00000390: User Defined Vector
-           .long        0               | Vector #229, 0x00000394: User Defined Vector
-           .long        0               | Vector #230, 0x00000398: User Defined Vector
-           .long        0               | Vector #231, 0x0000039C: User Defined Vector
-           .long        0               | Vector #232, 0x000003A0: User Defined Vector
-           .long        0               | Vector #233, 0x000003A4: User Defined Vector
-           .long        0               | Vector #234, 0x000003A8: User Defined Vector
-           .long        0               | Vector #235, 0x000003AC: User Defined Vector
-           .long        0               | Vector #236, 0x000003B0: User Defined Vector
-           .long        0               | Vector #237, 0x000003B4: User Defined Vector
-           .long        0               | Vector #238, 0x000003B8: User Defined Vector
-           .long        0               | Vector #239, 0x000003BC: User Defined Vector
-           .long        0               | Vector #240, 0x000003C0: User Defined Vector
-           .long        0               | Vector #241, 0x000003C4: User Defined Vector
-           .long        0               | Vector #242, 0x000003C8: User Defined Vector
-           .long        0               | Vector #243, 0x000003CC: User Defined Vector
-           .long        0               | Vector #244, 0x000003D0: User Defined Vector
-           .long        0               | Vector #245, 0x000003D4: User Defined Vector
-           .long        0               | Vector #246, 0x000003D8: User Defined Vector
-           .long        0               | Vector #247, 0x000003DC: User Defined Vector
-           .long        0               | Vector #248, 0x000003E0: User Defined Vector
-           .long        0               | Vector #249, 0x000003E4: User Defined Vector
-           .long        0               | Vector #250, 0x000003E8: User Defined Vector
-           .long        0               | Vector #251, 0x000003EC: User Defined Vector
-           .long        0               | Vector #252, 0x000003F0: User Defined Vector
-           .long        0               | Vector #253, 0x000003F4: User Defined Vector
-           .long        0               | Vector #254, 0x000003F8: User Defined Vector
-           .long        0               | Vector #255, 0x000003FC: User Defined Vector
 
-           | MFP vector patch block from IDE68K removed for GAS compatibility.
-           | These vectors should be filled directly in the main table if needed.
+           .org         0x280
+           .long        _intMfpGpi0        | Vector 0xA0: General Purpose Interrupt 0 (I0)
+           .long        _intMfpGpi1        | Vector 0xA1: General Purpose Interrupt 1 (I1)
+           .long        _intMfpGpi2        | Vector 0xA2: General Purpose Interrupt 2 (I2)
+           .long        _intMfpGpi3        | Vector 0xA3: General Purpose Interrupt 3 (I3)
+           .long        _intMfpTmrD        | Vector 0xA4: Timer D
+           .long        _intMfpTmrC        | Vector 0xA5: Timer C
+           .long        _intMfpGpi4        | Vector 0xA6: General Purpose Interrupt 4 (I4)
+           .long        _intMfpGpi5        | Vector 0xA7: General Purpose Interrupt 5 (I5)
+           .long        0x008001D0         | Vector 0xA8: Timer B / OSTick ISR entry
+           .long        _intMfpXmitErr     | Vector 0xA9: Transmit Error
+           .long        _intMfpXmitBufEmpty | Vector 0xAA: Transmit Buffer Empty
+           .long        _intMfpRecErr      | Vector 0xAB: Receive Error
+           .long        _intMfpRecBufFull  | Vector 0xAC: Receiver Buffer Full
+           .long        _intMfpTmrA        | Vector 0xAD: Timer A
+           .long        _intMfpGpi6        | Vector 0xAE: General Purpose Interrupt 6 (I6)
+           .long        _intMfpGpi7        | Vector 0xAF: General Purpose Interrupt 7 (I7)
 
 __exit:                                | exit() functions
 _exit:
@@ -306,11 +226,13 @@ _exit:
            trap        #15
            .word        0               | IDE68K system call 0 -> EXIT (no return)
            jsr         main           | when re-started after exit() call
+           rts
 
 __putch:                               | Basic character output routine
            move.l      4(%a7),%d0
            trap        #15
            .word        1               | IDE68K system call 1 -> PUTCH
+__putch_rts:
            rts
 
 __getch:                               | Basic character input routine
@@ -328,6 +250,9 @@ __kbhit:
 
            .extern __allocp
            .extern videoFontes
+
+           .org 0x400
+os_boot_entry:
             and.w   #0xF8FF,%sr            | mascara de interrup????o nao setada, 0
             move.l  #_fontesMatrix,%d1   | colocar endereco da variavel que vai ser de ponteiro para a posicao das fontes apos a compilacao
             move.l  %d1,videoFontes              | colocar endereco apos a compilacao de onde estao as fontes para VGA
@@ -395,8 +320,7 @@ bss:                                    | un-initialized data
 __stack:
 __ungetbuf:
            .space 4               | ungetbuffer for stdio functions
-           .section .bss
+           .section .heapram
            .balign 2
-           .org 0x810000
-heap:                                   | start of free memory
+heap:                                   | start of free memory (placed at 0x810000 by linker)
 

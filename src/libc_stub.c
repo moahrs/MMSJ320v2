@@ -57,25 +57,55 @@ long atol(const char *nptr) {
 }
 
 static char *to_base(unsigned long value, char *str, int base) {
-    char tmp[34];
+    static const unsigned long dec_divs[] = {
+        1000000000UL, 100000000UL, 10000000UL, 1000000UL, 100000UL,
+        10000UL, 1000UL, 100UL, 10UL, 1UL
+    };
     int i = 0;
-    if (base < 2 || base > 16) {
+
+    if (base != 10 && base != 16) {
         str[0] = '\0';
         return str;
     }
+
     if (value == 0) {
         str[0] = '0';
         str[1] = '\0';
         return str;
     }
-    while (value != 0) {
-        unsigned long d = value % (unsigned long)base;
-        tmp[i++] = (char)(d < 10 ? ('0' + d) : ('a' + (d - 10)));
-        value /= (unsigned long)base;
+
+    if (base == 16) {
+        int shift;
+        int started = 0;
+        for (shift = 28; shift >= 0; shift -= 4) {
+            unsigned long d = (value >> (unsigned long)shift) & 0xFUL;
+            if (!started && d == 0) {
+                continue;
+            }
+            started = 1;
+            str[i++] = (char)(d < 10 ? ('0' + d) : ('a' + (d - 10)));
+        }
+        str[i] = '\0';
+        return str;
     }
-    for (int j = 0; j < i; j++) {
-        str[j] = tmp[i - 1 - j];
+
+    {
+        int idx;
+        int started = 0;
+        for (idx = 0; idx < (int)(sizeof(dec_divs) / sizeof(dec_divs[0])); idx++) {
+            unsigned long div = dec_divs[idx];
+            unsigned char digit = 0;
+            while (value >= div) {
+                value -= div;
+                digit++;
+            }
+            if (digit || started) {
+                str[i++] = (char)('0' + digit);
+                started = 1;
+            }
+        }
     }
+
     str[i] = '\0';
     return str;
 }
